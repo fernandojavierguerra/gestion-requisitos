@@ -17,6 +17,7 @@
                 <th>Nombre</th>
                 <th>Descripción</th>
                 <th>Aplicación</th>
+           
                 <th>Ver</th>
                 <th>Editar</th>
                 <th>Eliminar</th>
@@ -26,7 +27,7 @@
                 <td th:text="${proyecto.id}">Product Id</td>
                 <td th:text="${proyecto.nombreProyecto}">descirption</td>
                 <td th:text="${proyecto.descripcionProyecto}">ion</td>
-                
+   
                 <td><a th:href="${'/proyecto/' + proyecto.id}">View</a></td>
                 <td><a th:href="${'/proyecto/edit/' + proyecto.id}">Edit</a></td>
                 <td><a th:href="${'/proyecto/delete/' + proyecto.id}">Delete</a></td>

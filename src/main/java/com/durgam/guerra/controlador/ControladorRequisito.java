@@ -21,8 +21,6 @@ public class ControladorRequisito {
 	private ServicioRequisitoCompuesto servicioRequisitocompuesto;
 
 
-
-	
 	 @RequestMapping(value = "/requisitosSimples", method = RequestMethod.GET)
 	    public String list(Model model){
 	        model.addAttribute("requisitos", servicioRequisitoSimple.obtenerTodosLosRequisitosSimples());
