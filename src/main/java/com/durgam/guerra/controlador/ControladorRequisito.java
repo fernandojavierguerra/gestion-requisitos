@@ -21,12 +21,8 @@ public class ControladorRequisito {
 	private ServicioRequisitoCompuesto servicioRequisitocompuesto;
 
 
-	@RequestMapping("requisitosSimple/new")
-    public String newProduct(Model model){
-        model.addAttribute("requisito", new RequisitoSimple());
-        return "requisitoSimpleform";
-        
-    }
+
+	
 	 @RequestMapping(value = "/requisitosSimples", method = RequestMethod.GET)
 	    public String list(Model model){
 	        model.addAttribute("requisitos", servicioRequisitoSimple.obtenerTodosLosRequisitosSimples());
@@ -37,6 +33,11 @@ public class ControladorRequisito {
 		 servicioRequisitoSimple.NuevoRequisitoSimple(requisito);
 	        return "redirect:/requisitosSimple/" + requisito.getId();
 	    }
+		@RequestMapping("requisitosSimple/new")
+	    public String newProduct(Model model){
+	        model.addAttribute("requisito", new RequisitoSimple());
+	        return "requisitoSimpleform";
+	          }
 		 @RequestMapping("requisitosSimple/{id}")
 		    public String showProduct(@PathVariable Long id, Model model){
 		        model.addAttribute("requisito", servicioRequisitoSimple.buscarRequisitoSimplePorId(id));

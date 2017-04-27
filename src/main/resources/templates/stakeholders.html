@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title>Spring Framework Guru</title>
+
+    <!--/*/ <th:block th:include="config/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+<div class="container">
+    <!--/*/ <th:block th:include="config/header :: header"></th:block> /*/-->
+    <div th:if="${not #lists.isEmpty(stakeholders)}">
+        <h2>Lista de Proyectos</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>DNI</th>
+                <th>Rol</th>
+                <th>Ver</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+            </tr>
+            <tr th:each="stakeholder : ${stakeholders}">
+                <td th:text="${stakeholder.id}"><a href="/stakeholder/${stakeholder.id}">Id</a></td>
+                <td th:text="${stakeholder.id}">Id</td>
+                <td th:text="${stakeholder.nombre}">Nombre</td>
+                <td th:text="${stakeholder.apellido}">Apellido</td>
+                <td th:text="${stakeholder.dni}">DNI:</td>
+                <td th:text="${stakeholder.rol}">Rol:</td>
+                
+                <td><a th:href="${'/stakeholder/' + stakeholder.id}">Ver</a></td>
+                <td><a th:href="${'/stakeholder/edit/' + stakeholder.id}">Editar</a></td>
+                <td><a th:href="${'/stakeholder/delete/' + stakeholder.id}">Eliminar</a></td>
+            </tr>
+        </table>
+
+    </div>
+
+    <!-- Pagination Bar -->
+    <div th:fragment='paginationbar'>
+   
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -57,5 +57,9 @@ public class ServicioStakeholder {
 	public void ActualizarStakeholder(Stakeholder stakeholder){
 		repositorioStakeholder.saveAndFlush(stakeholder);
 	}
+	@Transactional
+	public Stakeholder buscarStakeholderPorId(Long id){
+		return repositorioStakeholder.findOne(id);
+	}
 }
 

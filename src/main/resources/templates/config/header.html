@@ -12,12 +12,26 @@
                 <div class="navbar-header">
                     <a class="navbar-brand" href="#" th:href="@{/}">Inicio</a>
                     <ul class="nav navbar-nav">
-                         <li><a href="#" th:href="@{/proyectos}">Proyectos</a></li>
-                         <li><a href="#" th:href="@{/proyecto/new}">Nuevo Proyecto</a></li>
-                    <li><a href="#" th:href="@{/requisitosSimples}">Requisitos Simples</a></li>
-                    <li><a href="#" th:href="@{/requisitosSimple/new}">Nuevo Requisito Simple</a></li>
+                         <li><a href="#" th:href="@{/proyectos}">Proyectos</a>
+                         		<ul>
+    								<li><a href="#" th:href="@{/proyectos}">Proyectos</a></li>
+    								<li><a href="#" th:href="@{/proyecto/new}">Nuevo Proyecto</a></li>
+  								</ul>
+                        </li>
+                        <li><a href="#" th:href="@{/requisitosSimples}">Requisitos Simples</a>
+                        <ul>
+                        <li><a href="#" th:href="@{/requisitosSimples}">Requisitos Simples</a></li>
+                    	<li><a href="#" th:href="@{/requisitosSimple/new}">Nuevo Requisito Simple</a></li>
+                        </ul>                        
+                        </li>
+                    	
+                        <li><a href="#" th:href="@{/stakeholders}">Interesados</a>
+                    			<ul>
+    								<li><a href="#" th:href="@{/stakeholders}">Interesados</a></li>
+    								<li><a href="#" th:href="@{/stakeholder/new}">Nuevo Interesado</a></li>
+  								</ul>	
+                    	</li>
                     </ul>
-
                 </div>
             </div>
         </nav>
