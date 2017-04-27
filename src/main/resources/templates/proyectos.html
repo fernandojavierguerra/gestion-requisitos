@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title>Spring Framework Guru</title>
+
+    <!--/*/ <th:block th:include="config/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+<div class="container">
+    <!--/*/ <th:block th:include="config/header :: header"></th:block> /*/-->
+    <div th:if="${not #lists.isEmpty(proyectos)}">
+        <h2>Lista de Proyectos</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Aplicación</th>
+                <th>Ver</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+            </tr>
+            <tr th:each="proyecto : ${proyectos}">
+                <td th:text="${proyecto.id}"><a href="/product/${proyecto.id}">Id</a></td>
+                <td th:text="${proyecto.id}">Product Id</td>
+                <td th:text="${proyecto.nombreProyecto}">descirption</td>
+                <td th:text="${proyecto.descripcionProyecto}">ion</td>
+                
+                <td><a th:href="${'/proyecto/' + proyecto.id}">View</a></td>
+                <td><a th:href="${'/proyecto/edit/' + proyecto.id}">Edit</a></td>
+                <td><a th:href="${'/proyecto/delete/' + proyecto.id}">Delete</a></td>
+            </tr>
+        </table>
+
+    </div>
+
+    <!-- Pagination Bar -->
+    <div th:fragment='paginationbar'>
+   
+    </div>
+
+</div>
+
+</body>
+</html>

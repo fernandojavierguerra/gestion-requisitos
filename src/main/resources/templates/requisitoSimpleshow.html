@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title>Spring Framework Guru</title>
+
+    <!--/*/ <th:block th:include="config/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+<div class="container">
+    <!--/*/ <th:block th:include="config/header :: header"></th:block> /*/-->
+
+    <h2>Requisito Simple Detalles</h2>
+        <div>
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Id:</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static" th:text="${requisito.id}">Product Id</p></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Nombre:</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static" th:text="${requisito.nombre}">description</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Necesidad:</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static" th:text="${requisito.necesidad}">Necesidad</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Prioridad:</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static" th:text="${requisito.prioridad}">Prioridad</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Riesgo:</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static" th:text="${requisito.riesgo}">Riesgo</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Estado:</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static" th:text="${requisito.riesgo}">debe ser Estado</p>
+                    </div>
+                </div>
+               </form>
+    </div>
+</div>
+</body>
+</html>
