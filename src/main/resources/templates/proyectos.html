@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head lang="en">
 
-    <title>Spring Framework Guru</title>
+    <title>Sistema Requerimientos</title>
 
     <!--/*/ <th:block th:include="config/headerinc :: head"></th:block> /*/-->
 </head>
@@ -24,8 +24,8 @@
             </tr>
             <tr th:each="proyecto : ${proyectos}">
                 <td th:text="${proyecto.id}"><a href="/product/${proyecto.id}">Id</a></td>
-                <td th:text="${proyecto.id}">Product Id</td>
-                <td th:text="${proyecto.nombreProyecto}">descirption</td>
+                <td th:text="${proyecto.id}">Nombre</td>
+                <td th:text="${proyecto.nombreProyecto}">Descripción</td>
                 <td th:text="${proyecto.descripcionProyecto}">ion</td>
    
                 <td><a th:href="${'/proyecto/' + proyecto.id}">View</a></td>
