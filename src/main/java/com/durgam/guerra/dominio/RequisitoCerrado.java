@@ -14,5 +14,11 @@ public class RequisitoCerrado extends EstadoRequisito {
 		
 	}
 
+	@Override
+	public void siguiente() {
+		// TODO Auto-generated method stub
+		//Posibles: ninguno :)
+	}
+
 
 }

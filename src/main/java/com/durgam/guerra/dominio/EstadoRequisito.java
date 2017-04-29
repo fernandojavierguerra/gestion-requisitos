@@ -44,6 +44,8 @@ abstract public class EstadoRequisito {
 		this.descripcionEstado = descripcionEstado;
 	}
 	
+	abstract public void siguiente();
+	
 	abstract public void resolver();
 
 	//abstract public void cerrar();

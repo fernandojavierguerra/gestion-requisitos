@@ -15,5 +15,10 @@ public class RequisitoResuelto extends EstadoRequisito {
 		super(1,descripcion);
 		// TODO Auto-generated constructor stub
 	}
+	@Override
+	public void siguiente() {
+		// TODO Auto-generated method stub
+		//Posibles: Reabierto, Cerrado
+	}
 
 }
