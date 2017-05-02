@@ -77,6 +77,12 @@ public class ServicioRequisito {
 		
 		
 	}
+	@Transactional
+	public Requisito cambiarEstado(Long id, EstadoRequisito estado){
+		Requisito requisito= this.buscarRequisitoPorId(id);
+	requisito.setEstadoRequisito(estado);
+		return requisito;
+	}
 	
 	
 	@Transactional
