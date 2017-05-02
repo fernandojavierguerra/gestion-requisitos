@@ -50,4 +50,10 @@ public class ControladorProyecto {
 		 servicioProyecto.borrarProyectoId(id);
 	     return "redirect:/proyectos";
 	 }
+	 @RequestMapping("proyecto/nuevoRequisito/{id}")
+	 public String agregarRequisito(@PathVariable Long id,Model model){
+		 model.addAttribute("proyecto", servicioProyecto.buscarProyectoPorId(id));
+		 //servicioProyecto.borrarProyectoId(id);
+	     return "proyectoNuevoRequisito";
+	 }
 }

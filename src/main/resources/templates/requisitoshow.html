@@ -69,9 +69,9 @@
                 <td th:text="${requisito.nombre}">Id</td>
                 <td th:text="${requisito.necesidad}">Necesidad</td>
                 <td th:text="${requisito.prioridad}">Prioridad</td>
-                <td><a th:href="${'/requisitosSimple/' + requisito.id}">Ver</a></td>
-                <td><a th:href="${'/requisitosSimple/edit/' + requisito.id}">Editar</a></td>
-                <td><a th:href="${'/requisitosSimple/delete/' + requisito.id}">Eiminar</a></td>
+                <td><a th:href="${'/requisitos/' + requisito.id}">Ver</a></td>
+                <td><a th:href="${'/requisitos/edit/' + requisito.id}">Editar</a></td>
+                <td><a th:href="${'/requisitos/delete/' + requisito.id}">Eliminar</a></td>
             </tr>
         </table>
 
@@ -81,8 +81,6 @@
 
 </div>
          
-
-
 
                </form>
     </div>

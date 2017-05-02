@@ -30,39 +30,12 @@
                         <p class="form-control-static" th:text="${proyecto.descripcionProyecto}">descripcion</p>
                     </div>
                 </div>
+            aqui debe estar el formulario
             
-        <div class="container">
-       <div th:if="${not #lists.isEmpty(proyecto.requisitos)}">
-        <h2>Requisitos</h2>
-        <table class="table table-striped">
-            <tr>
-                <th>Id</th>
-                <th>Product Id</th>
-                <th>Description</th>
-                <th>Price</th>
-                <th>View</th>
-                <th>Edit</th>
-                <th>Delete</th>
-            </tr>
-            <tr th:each="requisito : ${proyecto.requisitos}">
-                <td th:text="${requisito.id}"><a href="/requisitosSimple/${requisito.id}">Id</a></td>
-                <td th:text="${requisito.nombre}">Id</td>
-                <td th:text="${requisito.necesidad}">Necesidad</td>
-                <td th:text="${requisito.prioridad}">Prioridad</td>
-                <td><a th:href="${'/requisitosSimple/' + requisito.id}">Ver</a></td>
-                <td><a th:href="${'/requisitosSimple/edit/' + requisito.id}">Editar</a></td>
-                <td><a th:href="${'/requisitosSimple/delete/' + requisito.id}">Eliminar</a></td>
-            </tr>
-        </table>
-
-    </div>
-
      
-
-</div>  
                 
                </form>
-            <a th:href="${'/proyecto/nuevoRequisito/' + proyecto.id}">Nuevo Requisito</a>   
+           
           </div>
 </div>
 </body>
