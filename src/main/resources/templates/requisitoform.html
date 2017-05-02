@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title>Sistema Requerimientos</title>
+
+    <!--/*/ <th:block th:include="config/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+<div class="container">
+    <!--/*/ <th:block th:include="config/header :: header"></th:block> /*/-->
+
+    <h2>Requisito Detalle</h2>
+    <div>
+        <form class="form-horizontal" th:object="${requisito}" th:action="@{/requisito}" method="post">
+            <input type="hidden" th:field="*{id}"/>
+         
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Nombre:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" th:field="*{nombre}"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Necesidad:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" th:field="*{necesidad}"/>
+                </div>
+            </div>
+             <div class="form-group">
+                <label class="col-sm-2 control-label">Prioridad:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" th:field="*{prioridad}"/>
+                </div>
+            </div>
+             <div class="form-group">
+                <label class="col-sm-2 control-label">Riesgo:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" th:field="*{riesgo}"/>
+                </div>
+            </div>
+            
+            <div class="row">
+                <button type="submit" class="btn btn-default">Aceptar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

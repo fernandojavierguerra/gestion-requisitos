@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.durgam.guerra.dominio.RequisitoCompuesto;
 import com.durgam.guerra.dominio.RequisitoSimple;
+import com.durgam.guerra.servicio.ServicioRequisito;
 import com.durgam.guerra.servicio.ServicioRequisitoCompuesto;
 import com.durgam.guerra.servicio.ServicioRequisitoSimple;
 
@@ -17,39 +19,68 @@ import com.durgam.guerra.servicio.ServicioRequisitoSimple;
 public class ControladorRequisito {
 	
 	@Autowired
-	private ServicioRequisitoSimple servicioRequisitoSimple;
-	private ServicioRequisitoCompuesto servicioRequisitocompuesto;
+	private ServicioRequisito servicioRequisito;
+	
 
-
-	 @RequestMapping(value = "/requisitosSimples", method = RequestMethod.GET)
+	 @RequestMapping(value = "/requisitos", method = RequestMethod.GET)
 	    public String list(Model model){
-	        model.addAttribute("requisitos", servicioRequisitoSimple.obtenerTodosLosRequisitosSimples());
-	        return "requisitosSimples";
+	        model.addAttribute("requisitos", servicioRequisito.obtenerTodosLosRequisitos());
+	        return "requisitos";
 	    }
-	 @RequestMapping(value = "requisitoSimple", method = RequestMethod.POST)
+	 @RequestMapping(value = "requisito", method = RequestMethod.POST)
 	    public String saveProduct(RequisitoSimple requisito){
-		 servicioRequisitoSimple.NuevoRequisitoSimple(requisito);
-	        return "redirect:/requisitosSimple/" + requisito.getId();
+		 servicioRequisito.NuevoRequisito(requisito);
+	        return "redirect:/requisitos/" + requisito.getId();
 	    }
-		@RequestMapping("requisitosSimple/new")
-	    public String newProduct(Model model){
+		@RequestMapping("requisitos/newSimple")
+	    public String newRequisitoSimple(Model model){
 	        model.addAttribute("requisito", new RequisitoSimple());
-	        return "requisitoSimpleform";
+	        return "requisitoform";
 	          }
-		 @RequestMapping("requisitosSimple/{id}")
-		    public String showProduct(@PathVariable Long id, Model model){
-		        model.addAttribute("requisito", servicioRequisitoSimple.buscarRequisitoSimplePorId(id));
-		        return "requisitoSimpleshow";
+		
+		@RequestMapping("requisitos/newCompuesto")
+	    public String newRequisitoCompuesto(Model model){
+	        model.addAttribute("requisito", new RequisitoCompuesto());
+	        return "requisitoform";
+	          }
+		
+		 @RequestMapping("requisitos/{id}")
+		    public String requisitoShow(@PathVariable Long id, Model model){
+		        model.addAttribute("requisito", servicioRequisito.buscarRequisitoPorId(id));
+		        model.addAttribute("estado", servicioRequisito.buscarRequisitoPorId(id).getEstadoRequisito());
+		        return "requisitoshow";
 		 }
-		 @RequestMapping("requisitosSimple/edit/{id}")
+		 @RequestMapping("requisitos/edit/{id}")
 		 public String edit(@PathVariable Long id, Model model){
-			    model.addAttribute("requisito", servicioRequisitoSimple.buscarRequisitoSimplePorId(id));
-			    return "requisitoSimpleform";
+			    model.addAttribute("requisito", servicioRequisito.buscarRequisitoPorId(id));
+			    return "requisitoform";
 
 		 }
-		 @RequestMapping("requisitosSimple/delete/{id}")
+		 @RequestMapping("requisitos/delete/{id}")
 		 public String delete(@PathVariable Long id){
-			 servicioRequisitoSimple.borrarRequisitoSimplePorId(id);
-		     return "redirect:/requisitosSimples";
+			 servicioRequisito.borrarRequisitoPorId(id);
+		     return "redirect:/requisitos";
 		 }
+		 
+		 @RequestMapping("requisitosCambioEstado/{id}")
+		    public String requisitoCambioEstado(@PathVariable Long id, Model model){
+		        model.addAttribute("requisito", servicioRequisito.buscarRequisitoPorId(id));
+		        model.addAttribute("estado", servicioRequisito.buscarRequisitoPorId(id).getEstadoRequisito());
+		        model.addAttribute("siguientes", servicioRequisito.buscarRequisitoPorId(id).getEstadoRequisito().siguiente());
+		        return "requisitoCambioEstado";
+		 }
+		// @RequestMapping("cambioEstado/{id}")
+
+/*		@RequestMapping(
+				value = "/cambioEstado", 
+				headers = { "key1=val1", "key2=val2" }, method = RequestMethod.GET)  
+		 public String CambioEstado(@PathVariable Long id, Model model){
+			 model.addAttribute("requisito", servicioRequisito.buscarRequisitoPorId(id));
+		     model.addAttribute("estado", servicioRequisito.buscarRequisitoPorId(id).getEstadoRequisito());
+		     model.addAttribute("siguientes", servicioRequisito.buscarRequisitoPorId(id).getEstadoRequisito().siguiente());
+		       
+		        return "requisitoCambioEstado";
+		
+		 }
+*/
 }
