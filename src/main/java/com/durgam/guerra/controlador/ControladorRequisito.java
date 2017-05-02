@@ -7,8 +7,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.durgam.guerra.dominio.Requisito;
 import com.durgam.guerra.dominio.RequisitoCompuesto;
 import com.durgam.guerra.dominio.RequisitoSimple;
+import com.durgam.guerra.repositorio.RepositorioRequisitoCompuesto;
+import com.durgam.guerra.repositorio.RepositorioRequisitoSimple;
 import com.durgam.guerra.servicio.ServicioRequisito;
 import com.durgam.guerra.servicio.ServicioRequisitoCompuesto;
 import com.durgam.guerra.servicio.ServicioRequisitoSimple;
@@ -48,11 +51,15 @@ public class ControladorRequisito {
 		    public String requisitoShow(@PathVariable Long id, Model model){
 		        model.addAttribute("requisito", servicioRequisito.buscarRequisitoPorId(id));
 		        model.addAttribute("estado", servicioRequisito.buscarRequisitoPorId(id).getEstadoRequisito());
+		        model.addAttribute("compuesto", servicioRequisito.buscarComposicionPorId(id));
 		        return "requisitoshow";
 		 }
 		 @RequestMapping("requisitos/edit/{id}")
 		 public String edit(@PathVariable Long id, Model model){
-			    model.addAttribute("requisito", servicioRequisito.buscarRequisitoPorId(id));
+			 model.addAttribute("requisito", servicioRequisito.buscarRequisitoPorId(id));
+		        model.addAttribute("estado", servicioRequisito.buscarRequisitoPorId(id).getEstadoRequisito());
+		        model.addAttribute("compuesto", servicioRequisito.buscarComposicionPorId(id));
+			 	
 			    return "requisitoform";
 
 		 }

@@ -61,5 +61,11 @@ public class RequisitoCompuesto extends Requisito {
 		super();
 		requisitos=new ArrayList<Requisito>();
 	}
+
+	@Override
+	Boolean compuesto() {
+		// TODO Auto-generated method stub
+		return Boolean.TRUE;
+	}
 		
 }

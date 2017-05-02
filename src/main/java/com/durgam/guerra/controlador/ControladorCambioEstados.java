@@ -25,8 +25,6 @@ public class ControladorCambioEstados {
         model.addAttribute("estado", servicioRequisito.buscarRequisitoPorId(id).getEstadoRequisito());
         model.addAttribute("siguientes", servicioRequisito.buscarRequisitoPorId(id).getEstadoRequisito().siguiente());
         return "redirect:/requisitosCambioEstado/" + id;
-
-        
     
  }
 	@RequestMapping("cambioEstado/Cerrado/{id}")

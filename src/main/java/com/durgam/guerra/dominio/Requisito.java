@@ -83,6 +83,7 @@ public void setRiesgo(String riesgo) {
 
 abstract public void agregar(Requisito requisito);
 abstract public void eliminar(Requisito requisito);
+abstract Boolean compuesto();
 
 }
 

@@ -33,4 +33,10 @@ public class RequisitoSimple extends Requisito {
 		
 	}
 
+	@Override
+	Boolean compuesto() {
+		// TODO Auto-generated method stub
+		return Boolean.FALSE;
+	}
+
 }
