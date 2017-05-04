@@ -15,7 +15,7 @@ import javax.persistence.ManyToMany;
 public class Stakeholder {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long id;
+	private Long id;
 	private String nombre;
 	private String apellido;
 	private String rol;
@@ -26,7 +26,7 @@ public class Stakeholder {
 	private List<Requisito> requisitos;
 	
 	
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 	public void setId(long id) {
