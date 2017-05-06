@@ -15,7 +15,7 @@ public class RequisitoResuelto extends EstadoRequisito {
 		
 	}
 	public RequisitoResuelto() {
-		super(1,descripcion);
+		super((long) 1,descripcion);
 		// TODO Auto-generated constructor stub
 	}
 	@Override

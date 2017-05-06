@@ -16,7 +16,7 @@ import javax.persistence.OneToOne;
 abstract public class Requisito {
 @Id
 @GeneratedValue(strategy=GenerationType.AUTO)	
-private long id;
+private Long id;
 private String nombre;
 private String necesidad;
 private String prioridad;
@@ -50,10 +50,10 @@ public void setEstadoRequisito(EstadoRequisito estado) {
 	this.estado = estado;
 }
 
-public long getId() {
+public Long getId() {
 	return id;
 }
-public void setId(long id) {
+public void setId(Long id) {
 	this.id = id;
 }
 public String getNombre() {

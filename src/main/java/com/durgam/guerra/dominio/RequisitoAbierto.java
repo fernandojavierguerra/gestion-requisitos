@@ -12,7 +12,7 @@ public class RequisitoAbierto extends EstadoRequisito{
 	static final String descripcion="Abierto";
 	
 	public RequisitoAbierto() {
-		super(1,descripcion);
+		super((long) 1,descripcion);
 	this.siguiente();
 		// TODO Auto-generated constructor stub
 	}

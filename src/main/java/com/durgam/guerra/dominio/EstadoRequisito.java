@@ -23,7 +23,7 @@ abstract public class EstadoRequisito {
 		// TODO Auto-generated constructor stub
 	}
 
-	public EstadoRequisito(long id, String descripcionEstado) {
+	public EstadoRequisito(Long id, String descripcionEstado) {
 		super();
 		this.id = id;
 		this.descripcionEstado = descripcionEstado;
@@ -32,16 +32,16 @@ abstract public class EstadoRequisito {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)	
-	private long id;
+	private Long id;
 	private String descripcionEstado;
 	
 	
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	

@@ -16,7 +16,7 @@ public class GestionRequisito {
 	private static GestionRequisito miapp;
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)	
-	private long id;
+	private Long id;
 	private String nombre;
 	static final String sistema_nombre="Sistema Requisitos 2017";
 	

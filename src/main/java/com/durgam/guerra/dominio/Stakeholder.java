@@ -29,7 +29,7 @@ public class Stakeholder {
 	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getNombre() {
@@ -50,7 +50,7 @@ public class Stakeholder {
 	public void setRol(String rol) {
 		this.rol = rol;
 	}
-	public Stakeholder(long id, String dni, String nombre, String apellido, String rol) {
+	public Stakeholder(Long id, String dni, String nombre, String apellido, String rol) {
 		super();
 		this.id = id;
 		this.nombre = nombre;

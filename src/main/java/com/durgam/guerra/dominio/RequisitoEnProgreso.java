@@ -14,7 +14,7 @@ public class RequisitoEnProgreso extends EstadoRequisito {
 		
 	}
 	public RequisitoEnProgreso() {
-		super(1,descripcion);
+		super((long) 1,descripcion);
 		// TODO Auto-generated constructor stub
 	}
 	@Override

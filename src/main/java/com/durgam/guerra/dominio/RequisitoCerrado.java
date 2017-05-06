@@ -8,7 +8,7 @@ public class RequisitoCerrado extends EstadoRequisito {
 	private static RequisitoCerrado estado;
 
 	public RequisitoCerrado() {
-		super(1,descripcion);
+		super((long) 1,descripcion);
 		
 		// TODO Auto-generated constructor stub
 	}

@@ -25,8 +25,8 @@ public class ServicioStakeholder {
 	@Transactional
 	public void populate(){
 		System.out.println("Creando Stakeholders en la Base de Datos");
-		Stakeholder analistaJunior= new Stakeholder(0, "23456789","Martin","Progarmador1", "ProgramadorJunior");
-		Stakeholder analistaSenior= new Stakeholder(0, "23456789","Luis","AnalistaSeñior1", "Analista Principarl");
+		Stakeholder analistaJunior= new Stakeholder((long) 0, "23456789","Martin","Progarmador1", "ProgramadorJunior");
+		Stakeholder analistaSenior= new Stakeholder((long) 0, "23456789","Luis","AnalistaSeñior1", "Analista Principarl");
 		RequisitoSimple requisito1= new RequisitoSimple(0, "nombre","necesidad","prioridad","riesgo",null);
 		RequisitoSimple requisito2= new RequisitoSimple(0, "nombre","necesidad","prioridad","riesgo",null);
 		RequisitoSimple requisito3= new RequisitoSimple(0, "nombre","necesidad","prioridad","riesgo",null);
