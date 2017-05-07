@@ -26,11 +26,11 @@ public class ServicioRequisito {
 	private RepositorioRequisitoCompuesto repositorioCompuesto;
 	@Autowired
 	private RepositorioRequisitoSimple repositorioSimple;
-	@PostConstruct // La anotación PostConstruct se utiliza en un método que debe ejecutarse tras una inyección de dependencia para efectuar cualquier inicialización
-	@Transactional
-	public void populate(){
-	//Sin cargar requisito podria migrar de requisito simople
-	}
+//	@PostConstruct // La anotación PostConstruct se utiliza en un método que debe ejecutarse tras una inyección de dependencia para efectuar cualquier inicialización
+//	@Transactional
+//	public void populate(){
+//	//Sin cargar requisito podria migrar de requisito simople
+//	}
 	@Transactional
     public void borrarRequisitoPorId(Long id) {
 
