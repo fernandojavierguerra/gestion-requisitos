@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 
 @Entity
-@PrimaryKeyJoinColumn(name = "estadoRequisito")
+//@PrimaryKeyJoinColumn(name = "estadoRequisito")
 public class RequisitoAbierto extends EstadoRequisito {
 	static final String descripcion = "Abierto";
 	private static RequisitoAbierto estado;
