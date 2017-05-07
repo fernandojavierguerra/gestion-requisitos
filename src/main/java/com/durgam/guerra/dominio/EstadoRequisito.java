@@ -15,9 +15,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
-@Inheritance(strategy=InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.JOINED)
 abstract public class EstadoRequisito {
-	
+
 	public EstadoRequisito() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -27,15 +27,12 @@ abstract public class EstadoRequisito {
 		super();
 		this.id = id;
 		this.descripcionEstado = descripcionEstado;
-		
 	}
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)	
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String descripcionEstado;
-	
-	
 
 	public Long getId() {
 		return id;
@@ -44,7 +41,6 @@ abstract public class EstadoRequisito {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
 
 	public String getDescripcionEstado() {
 		return descripcionEstado;
@@ -53,21 +49,17 @@ abstract public class EstadoRequisito {
 	public void setDescripcionEstado(String descripcionEstado) {
 		this.descripcionEstado = descripcionEstado;
 	}
-	
-	
-	
 
 	abstract public List<EstadoRequisito> siguiente();
-	
+
 	abstract public void resolver();
 
-	//abstract public void cerrar();
-	
-	//abstract public void iniciarProgreso();
-	
-	//abstract public void detenerProgreso();
-	
-	//abstract public void reabrir();
-	
-	}
+	// abstract public void cerrar();
 
+	// abstract public void iniciarProgreso();
+
+	// abstract public void detenerProgreso();
+
+	// abstract public void reabrir();
+
+}
