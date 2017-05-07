@@ -29,6 +29,7 @@ abstract public class Requisito {
 	private EstadoRequisito estado;
 
 	public Requisito() {
+		//this.estado = RequisitoAbierto.getEstado();
 	}
 
 	public Requisito(Long id, String nombre, String necesidad, String prioridad, String riesgo, Proyecto proyecto) {
