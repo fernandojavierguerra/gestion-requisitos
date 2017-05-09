@@ -59,9 +59,9 @@ public class GestionRequisito {
 		this.nombre = nombre;
 	}
 	
-	@Transactional
-	public void guardarProyectos(){
+	//@Transactional
+	//public void guardarProyectos(){
 		
-	}
+	//}
 }
 

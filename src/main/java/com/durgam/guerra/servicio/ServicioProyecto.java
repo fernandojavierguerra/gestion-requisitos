@@ -7,15 +7,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
+import com.durgam.guerra.dominio.GestionRequisito;
 import com.durgam.guerra.dominio.Proyecto;
 import com.durgam.guerra.dominio.RequisitoSimple;
 import com.durgam.guerra.dominio.Stakeholder;
+import com.durgam.guerra.repositorio.RepositorioGestionRequisito;
 import com.durgam.guerra.repositorio.RepositorioProyecto;
 import com.durgam.guerra.repositorio.RepositorioRequisito;
 import com.durgam.guerra.repositorio.RepositorioStakeholder;
 @Service
 @Repository
 public class ServicioProyecto {
+	@Autowired
+	private RepositorioGestionRequisito repositorioapp;
 	@Autowired
 	private RepositorioProyecto repositorioProyecto;
 	@Autowired
@@ -28,20 +32,23 @@ public class ServicioProyecto {
 	@PostConstruct // La anotación PostConstruct se utiliza en un método que debe ejecutarse tras una inyección de dependencia para efectuar cualquier inicialización
 	@Transactional
 	public void populate(){
+		GestionRequisito app= GestionRequisito.getSistema();
 		System.out.println("Creando Proyectos en la Base de Datos");
 		Proyecto proyecto1 = new Proyecto ("Proyecto 1", "Cambio de version de BBDD");
 		Proyecto proyecto2 = new Proyecto ("Proyecto 2", "Proyecto Semaforos");
 		Proyecto proyecto3 = new Proyecto ("Proyecto 3", "Sistema Contable");
 		proyecto1.agregarRequisito(new RequisitoSimple(0, "Req1Proy1","Tensión Arterial","Media","Deshidratación", null));
 		proyecto1.agregarRequisito(new RequisitoSimple(0, "Req2Proy1","Cierre Automatico de Puertas","Alta","Suministro Electrico Interrumpido", null));
-//		proyecto2.agregarRequisito(new RequisitoSimple(0, "Req1Proy2","Despachar Cajero Automatico","Media","Seguridad de Cierre", null));
-//		proyecto2.agregarRequisito(new RequisitoSimple(0, "Req2Proy2","Desemcriptar Llave Bancaria","Alta","Sobrecarga Algoritmica", null));
-//		proyecto3.agregarRequisito(new RequisitoSimple(0, "Req1Proy3","Mayor Productividad","Alta","Costo de Oportunidad", null));
-//		proyecto3.agregarRequisito(new RequisitoSimple(0, "Req2Proy3","Menor tiempo de Respuesta","Media","Latencia ente request", null));
-		repositorioProyecto.saveAndFlush(proyecto1);
+		proyecto2.agregarRequisito(new RequisitoSimple(0, "Req1Proy2","Despachar Cajero Automatico","Media","Seguridad de Cierre", null));
+		proyecto2.agregarRequisito(new RequisitoSimple(0, "Req2Proy2","Desemcriptar Llave Bancaria","Alta","Sobrecarga Algoritmica", null));
+		proyecto3.agregarRequisito(new RequisitoSimple(0, "Req1Proy3","Mayor Productividad","Alta","Costo de Oportunidad", null));
+		proyecto3.agregarRequisito(new RequisitoSimple(0, "Req2Proy3","Menor tiempo de Respuesta","Media","Latencia ente request", null));
+//		repositorioProyecto.saveAndFlush(proyecto1);
 //		repositorioProyecto.saveAndFlush(proyecto2);
 //		repositorioProyecto.saveAndFlush(proyecto3);
-		
+		app.agregarProyecto(proyecto1);
+		app.agregarProyecto(proyecto2);
+		app.agregarProyecto(proyecto3);
 //		System.out.println("Creando Requisitos Simples en la Base de Datos");
 //		RequisitoSimple req1 = new RequisitoSimple(0, "Req1","Mantener Cartera Clientes","Alta","Costo de Oportunidad", null);
 //		RequisitoSimple req2 = new RequisitoSimple(0, "Req2","Minimizar tiempo de respusta de atencion","Media","Fidelidad del Cliente", null);
