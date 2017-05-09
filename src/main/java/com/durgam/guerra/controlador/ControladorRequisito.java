@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.durgam.guerra.dominio.GestionRequisito;
+import com.durgam.guerra.dominio.Proyecto;
 import com.durgam.guerra.dominio.Requisito;
 import com.durgam.guerra.dominio.RequisitoCompuesto;
 import com.durgam.guerra.dominio.RequisitoSimple;
@@ -76,6 +78,8 @@ public class ControladorRequisito {
 		        model.addAttribute("siguientes", servicioRequisito.buscarRequisitoPorId(id).getEstadoRequisito().siguiente());
 		        return "requisitoCambioEstado";
 		 }
+		 
+	
 		// @RequestMapping("cambioEstado/{id}")
 
 /*		@RequestMapping(
