@@ -1,26 +1,23 @@
 package com.durgam.guerra.servicio;
-
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.annotation.PostConstruct;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
-
 import com.durgam.guerra.dominio.EstadoRequisito;
-import com.durgam.guerra.dominio.GestionRequisito;
-import com.durgam.guerra.dominio.Proyecto;
 import com.durgam.guerra.dominio.Requisito;
-import com.durgam.guerra.dominio.RequisitoAbierto;
+import com.durgam.guerra.dominio.RequisitoCerrado;
 import com.durgam.guerra.dominio.RequisitoCompuesto;
+import com.durgam.guerra.dominio.RequisitoEnProgreso;
+import com.durgam.guerra.dominio.RequisitoReabierto;
 import com.durgam.guerra.dominio.RequisitoResuelto;
 import com.durgam.guerra.dominio.RequisitoSimple;
 import com.durgam.guerra.repositorio.RepositorioEstado;
 import com.durgam.guerra.repositorio.RepositorioRequisito;
 import com.durgam.guerra.repositorio.RepositorioRequisitoCompuesto;
 import com.durgam.guerra.repositorio.RepositorioRequisitoSimple;
+
 @Service
 @Repository
 public class ServicioRequisito {
@@ -29,48 +26,38 @@ public class ServicioRequisito {
 	@Autowired
 	private RepositorioEstado repositorioEstado;
 	@Autowired
+	private ServicioEstados estados;
+	@Autowired
 	private RepositorioRequisitoCompuesto repositorioCompuesto;
 	@Autowired
 	private RepositorioRequisitoSimple repositorioSimple;
-	@PostConstruct // La anotación PostConstruct se utiliza en un método que debe ejecutarse tras una inyección de dependencia para efectuar cualquier inicialización
-	@Transactional
-	public void populate(){
-	//Sin cargar requisito podria migrar de requisito simople
-GestionRequisito app= GestionRequisito.getSistema();
-		
-		Proyecto proyecto4 = new Proyecto ("Proyecto 4", "Cambio de version de BBDD");
-		Proyecto proyecto2 = new Proyecto ("Proyecto 2", "Proyecto Semaforos");
-		Proyecto proyecto3 = new Proyecto ("Proyecto 3", "Sistema Contable");
-		proyecto4.agregarRequisito(new RequisitoSimple(0, "Req1Proy1","Tensión Arterial","Media","Deshidratación", null));
-		proyecto4.agregarRequisito(new RequisitoSimple(0, "Req2Proy1","Cierre Automatico de Puertas","Alta","Suministro Electrico Interrumpido", null));
-		proyecto2.agregarRequisito(new RequisitoSimple(0, "Req1Proy2","Despachar Cajero Automatico","Media","Seguridad de Cierre", null));
-		proyecto2.agregarRequisito(new RequisitoSimple(0, "Req2Proy2","Desemcriptar Llave Bancaria","Alta","Sobrecarga Algoritmica", null));
-		proyecto3.agregarRequisito(new RequisitoSimple(0, "Req1Proy3","Mayor Productividad","Alta","Costo de Oportunidad", null));
-		proyecto3.agregarRequisito(new RequisitoSimple(0, "Req2Proy3","Menor tiempo de Respuesta","Media","Latencia ente request", null));
-		app.agregarProyecto(proyecto4);
-	}
+	
 	@Transactional
     public void borrarRequisitoPorId(Long id) {
-
-		repositorioRequisito.delete(id);
+		Requisito requisito =repositorioRequisito.findOne(id);
+		requisito.setEstadoRequisito(null);
+		repositorioRequisito.delete(requisito.getId());		
 	}
+	
 	@Transactional
     public void borrarRequisito(RequisitoSimple requisito) {
-
 		repositorioRequisito.delete(requisito.getId());
 	}
+	
 	@Transactional
 	public List<Requisito> obtenerTodosLosRequisitos(){
 		return repositorioRequisito.findAll();
 	}
+	
 	@Transactional
-	public void NuevoRequisito(RequisitoSimple requisito){
-		EstadoRequisito estado =repositorioEstado.findOne(RequisitoAbierto.getEstado().getId());
+	public void NuevoRequisito(Requisito requisito){
+		EstadoRequisito estado =estados.abierto();
 		requisito.setEstadoRequisito(estado);
 		repositorioRequisito.save(requisito);
 	}
+	
 	@Transactional
-	public void ActualizarRequisito(RequisitoSimple requisito){
+	public void ActualizarRequisito(Requisito requisito){
 		repositorioRequisito.saveAndFlush(requisito);
 	}	
 	
@@ -91,19 +78,25 @@ GestionRequisito app= GestionRequisito.getSistema();
 		return repositorioSimple.findOne(id);
 		}else {
 			return repositorioCompuesto.findOne(id);
-			
-		}
-		
-		
-		
+		}	
 	}
+	
+	@Transactional
+	public Requisito NuevoRequisitoSimple(){
+		return new RequisitoSimple();
+	}
+	
+	@Transactional
+	public Requisito NuevoRequisitoCompuesto(){
+		return new RequisitoCompuesto();
+	}
+	
 	@Transactional
 	public Requisito cambiarEstado(Long id, EstadoRequisito estado){
 		Requisito requisito= this.buscarRequisitoPorId(id);
 	requisito.setEstadoRequisito(estado);
 		return requisito;
 	}
-	
 	
 	@Transactional
 	public List<Requisito> buscarComposicionPorId(Long id) {
@@ -113,10 +106,24 @@ GestionRequisito app= GestionRequisito.getSistema();
 		}else
 		{
 		lista=null;	
-		}
-		
+		}	
 		return lista;
+	}
+	
+	public Object cambiarEstadoResuelto(Long id) {
+		return this.cambiarEstado(id, repositorioEstado.findOne(RequisitoResuelto.getEstado().getId()));
+	}
+	
+	public Object cambiarEstadoCerrado(Long id) {
+		return this.cambiarEstado(id,repositorioEstado.findOne(RequisitoCerrado.getEstado().getId()));
+	}
+	
+	public Object cambiarEstadoReabierto(Long id) {
+		return this.cambiarEstado(id, repositorioEstado.findOne(RequisitoReabierto.getEstado().getId()));
+	}
+	
+	public Object cambiarEstadoEnProgreso(Long id) {
 		// TODO Auto-generated method stub
-		
+		return this.cambiarEstado(id, repositorioEstado.findOne(RequisitoEnProgreso.getEstado().getId()));
 	}
 }

@@ -1,10 +1,7 @@
 package com.durgam.guerra.dominio;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.persistence.Entity;
-import javax.persistence.PrimaryKeyJoinColumn;
 
 @Entity
 public class RequisitoCerrado extends EstadoRequisito {
@@ -12,19 +9,10 @@ public class RequisitoCerrado extends EstadoRequisito {
 	private static RequisitoCerrado estado;
 
 	public RequisitoCerrado() {
-		super((long) 1, descripcion);
-
-		// TODO Auto-generated constructor stub
+		super((long) 2, descripcion);
 	}
 
-	@Override
-	public void resolver() {
-		// TODO Auto-generated method stub
-
-	}
-	
 	public static RequisitoCerrado getEstado() {
-
 		if (estado == null) {
 			estado = new RequisitoCerrado();
 		}
@@ -39,11 +27,7 @@ public class RequisitoCerrado extends EstadoRequisito {
 		RequisitoCerrado cerrado = new RequisitoCerrado();
 		lista.add(resuelto);
 		lista.add(cerrado);
-
 		return lista;
 
 	}
-
-
-
 }

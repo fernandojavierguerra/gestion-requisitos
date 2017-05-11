@@ -1,15 +1,12 @@
 package com.durgam.guerra.dominio;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-
 
 @Entity
 public class Stakeholder {
@@ -21,10 +18,8 @@ public class Stakeholder {
 	private String rol;
 	private String dni;
 	
-	
 	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Requisito> requisitos;
-	
 	
 	public Long getId() {
 		return id;
@@ -57,7 +52,7 @@ public class Stakeholder {
 		this.apellido = apellido;
 		this.rol = rol;
 		this.dni=dni;
-this.requisitos=new ArrayList<Requisito>();
+		this.requisitos=new ArrayList<Requisito>();
 	}
 	public Stakeholder() {
 		super();
@@ -70,14 +65,15 @@ this.requisitos=new ArrayList<Requisito>();
 		this.requisitos = requisitos;
 	}
 	
-public String getDni() {
+	public String getDni() {
 		return dni;
 	}
+	
 	public void setDni(String dni) {
 		this.dni = dni;
 	}
-public void agragarRequisito(Requisito requisito){
-	this.requisitos.add(requisito);
-}
 	
+	public void agregarRequisito(Requisito requisito){
+		this.requisitos.add(requisito);
+	}	
 }

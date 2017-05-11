@@ -1,22 +1,18 @@
 package com.durgam.guerra.dominio;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.persistence.Entity;
 
 @Entity
 public class RequisitoEnProgreso extends EstadoRequisito {
 	static final String descripcion="EnProgreso";
-	@Override
-	public void resolver() {
-		// TODO Auto-generated method stub
-		
-	}
+	private static RequisitoEnProgreso estado;
+	
 	public RequisitoEnProgreso() {
-		super((long) 1,descripcion);
+		super((long) 5,descripcion);
 		// TODO Auto-generated constructor stub
 	}
+	
 	@Override
 	public List<EstadoRequisito> siguiente() {
 		//Posibles: Resuelto, Cerrado
@@ -26,7 +22,12 @@ public class RequisitoEnProgreso extends EstadoRequisito {
 		lista.add(resuelto);
 		lista.add(cerrado);
 		return lista;
-		
 	}
 	
+	public static RequisitoEnProgreso getEstado() {
+		if (estado == null) {
+			estado = new RequisitoEnProgreso();
+		}
+		return estado;
+	}
 }

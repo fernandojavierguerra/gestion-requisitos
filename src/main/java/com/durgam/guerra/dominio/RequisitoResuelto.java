@@ -1,23 +1,17 @@
 package com.durgam.guerra.dominio;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.persistence.Entity;
-
 
 @Entity
 public class RequisitoResuelto extends EstadoRequisito {
 	static final String descripcion="Resuelto";
-	@Override
-	public void resolver() {
-		// TODO Auto-generated method stub
-		
+	private static RequisitoResuelto estado;
+			
+	public RequisitoResuelto(){
+		super((long) 3,descripcion);
 	}
-	public RequisitoResuelto() {
-		super((long) 1,descripcion);
-		// TODO Auto-generated constructor stub
-	}
+	
 	@Override
 	public List<EstadoRequisito> siguiente() {
 		// TODO Auto-generated method stub
@@ -29,6 +23,10 @@ public class RequisitoResuelto extends EstadoRequisito {
 		lista.add(cerrado);
 		return lista;
 	}
-	
-
+	public static RequisitoResuelto getEstado() {
+		if (estado == null) {
+			estado = new RequisitoResuelto();
+		}
+		return estado;
+	}
 }

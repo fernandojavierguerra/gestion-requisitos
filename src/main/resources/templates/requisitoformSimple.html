@@ -10,9 +10,9 @@
 <div class="container">
     <!--/*/ <th:block th:include="config/header :: header"></th:block> /*/-->
 
-    <h2>Requisito Detalle</h2>
+    <h2>Requisito Simple Detalle</h2>
     <div>
-        <form class="form-horizontal" th:object="${requisito}" th:action="@{/requisito}" method="post">
+        <form class="form-horizontal" th:object="${requisito}" th:action="@{/requisitoSimple/}" method="post">
             <input type="hidden" th:field="*{id}"/>
          
             <div class="form-group">

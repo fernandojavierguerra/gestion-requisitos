@@ -9,8 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-
-
 @Entity
 public class GestionRequisito {
 	private static GestionRequisito miapp;
@@ -30,18 +28,15 @@ public class GestionRequisito {
 	}
 
 	public static GestionRequisito getSistema() {
-		 
-		 if (miapp==null) {
-		  miapp=new GestionRequisito();
-		 }
-		 return miapp;
-		 }
+	 if (miapp==null) {
+		 miapp=new GestionRequisito();
+	 }
+	 	return miapp;
+	 }
 	
 	public void agregarProyecto(Proyecto documento) {
 		this.documentos.add(documento);
-		documento.setAplicacion(this);
-	
-	}
+		}
 
 	public List<Proyecto> getDocumentos() {
 		return documentos;
@@ -58,10 +53,5 @@ public class GestionRequisito {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	
-	//@Transactional
-	//public void guardarProyectos(){
-		
-	//}
 }
 

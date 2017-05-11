@@ -1,5 +1,4 @@
 package com.durgam.guerra.dominio;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,12 +6,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-
 import javax.persistence.OneToOne;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-abstract public class Requisito {
+public abstract class Requisito {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
@@ -21,16 +19,11 @@ abstract public class Requisito {
 	private String prioridad;
 	private String riesgo;
 
-	// @ManyToOne(cascade=(CascadeType.MERGE))
-	// private RequisitoCompuesto compuesto;
-	// @ManyToOne(cascade=(CascadeType.ALL))
-	// private Proyecto proyecto;
 	@OneToOne(cascade = (CascadeType.ALL))
 	private EstadoRequisito estado;
 
 	public Requisito() {
-		//this.estado = RequisitoAbierto.getEstado();
-		
+			
 	}
 
 	public Requisito(Long id, String nombre, String necesidad, String prioridad, String riesgo, Proyecto proyecto) {
@@ -39,14 +32,8 @@ abstract public class Requisito {
 		this.necesidad = necesidad;
 		this.prioridad = prioridad;
 		this.riesgo = riesgo;
-		// this.id=id;
-
-		this.estado = RequisitoAbierto.getEstado();
-		//this.estado = new RequisitoAbierto();
-		// this.estadoRequisito=new requisitoAbierto();
-		// aqui no deberia hacer proyecto_agregar_requisito(this)
 	}
-
+	
 	public EstadoRequisito getEstadoRequisito() {
 		return this.estado;
 	}
@@ -95,10 +82,8 @@ abstract public class Requisito {
 		this.riesgo = riesgo;
 	}
 
-	abstract public void agregar(Requisito requisito);
-
-	abstract public void eliminar(Requisito requisito);
-
-	abstract Boolean compuesto();
+	public Boolean compuesto() {
+		return null;
+	}
 
 }

@@ -23,7 +23,7 @@
             </tr>
             <tr th:each="requisito : ${requisitos}">
                 <td th:text="${requisito.id}"><a href="/requisitos/${requisito.id}">Id</a></td>
-                <td th:text="${requisito.nombre}">Id</td>
+                <td th:text="${requisito.nombre}">Nombre</td>
                 <td th:text="${requisito.necesidad}">Necesidad</td>
                 <td th:text="${requisito.prioridad}">Prioridad</td>
                 <td><a th:href="${'/requisitos/' + requisito.id}">Ver</a></td>
