@@ -75,5 +75,10 @@ public class Stakeholder {
 	
 	public void agregarRequisito(Requisito requisito){
 		this.requisitos.add(requisito);
+	}
+	@Override
+	public String toString() {
+		return "Stakeholder [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", rol=" + rol + ", dni="
+				+ dni + "]";
 	}	
 }
