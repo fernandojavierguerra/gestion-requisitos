@@ -26,22 +26,23 @@ public class ServicioStakeholderTest {
 	@Test
 	public void testTransaccionStakeholder(){
 
-		Stakeholder stake1= new Stakeholder((long) 10, "22111333","Juan","Programador", "Programador Junior");
+		Stakeholder stake1= new Stakeholder((long) 10, "22111333", "Juan", "Programador", "Programador Junior");
 		servicioStakeholder.NuevoStakeholder(stake1);
 		
-		System.out.println(stake1.toString());
-		Stakeholder stake2 = servicioStakeholder.buscarStakeholderPorId(stake1.getId());
-		System.out.println(stake2.toString());
-        try {
-        	servicioStakeholder.NuevoStakeholder(stake1);
-        } catch (RuntimeException e) {
-        	System.out.println("Esta excepcion es esperada porque ya existe stake1");
-        }
-				
-        for (Stakeholder interesado : servicioStakeholder.obtenerTodosLosStakeholder()) {
-           // logger.info("So far, " + interesado.toString() + " is booked.");
-        	System.out.println(interesado.toString());
-        }
+		System.out.println("Interesado 1" + stake1.toString());
+
+//		Stakeholder stake2 = servicioStakeholder.buscarStakeholderPorId((long) 3);
+//		System.out.println("Interesado 2" + stake2.toString());
+
+		try {
+			servicioStakeholder.NuevoStakeholder(stake1);
+		} catch (RuntimeException e) {
+			System.out.println("Esta excepcion es esperada porque ya existe stake1");
+		}
+
+		for (Stakeholder interesado : servicioStakeholder.obtenerTodosLosStakeholder()) {
+			System.out.println(interesado.toString());
+		}
 		
 		/*
 		 * 
