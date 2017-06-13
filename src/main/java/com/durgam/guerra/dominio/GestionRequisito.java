@@ -16,15 +16,15 @@ public class GestionRequisito {
 	@GeneratedValue(strategy=GenerationType.AUTO)	
 	private Long id;
 	private String nombre;
-	static final String sistema_nombre="Sistema Requisitos 2017";
+	static final String sistema_nombre="Sistema Gestion de Requisitos 2017";
 	
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER,mappedBy = "aplicacion")
-	private List<Proyecto> documentos;
+	private List<Proyecto> proyectos;
 	
 	//Por Singleton: El constructor es privado, no permite que se genere un constructor por defecto.
 	private GestionRequisito() {
-		 this.setNombre(sistema_nombre);
-		this.documentos=new ArrayList<Proyecto>();
+		this.setNombre(sistema_nombre);
+		this.proyectos=new ArrayList<Proyecto>();
 	}
 
 	public static GestionRequisito getSistema() {
@@ -34,16 +34,16 @@ public class GestionRequisito {
 	 	return miapp;
 	 }
 	
-	public void agregarProyecto(Proyecto documento) {
-		this.documentos.add(documento);
+	public void agregarProyecto(Proyecto proyecto) {
+		this.proyectos.add(proyecto);
 		}
 
 	public List<Proyecto> getDocumentos() {
-		return documentos;
+		return proyectos;
 	}
 
-	public void setDocumentos(List<Proyecto> documentos) {
-		this.documentos = documentos;
+	public void setDocumentos(List<Proyecto> proyectos) {
+		this.proyectos = proyectos;
 	}
 
 	public String getNombre() {

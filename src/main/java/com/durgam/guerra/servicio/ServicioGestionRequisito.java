@@ -15,13 +15,13 @@ import com.durgam.guerra.repositorio.RepositorioGestionRequisito;
 public class ServicioGestionRequisito {
 	@Autowired
 	private RepositorioGestionRequisito repositorioGestReq;
-	@PostConstruct // La anotación PostConstruct se utiliza en un método que debe ejecutarse tras una inyección de dependencia para efectuar cualquier inicialización
-	@Transactional
-	public void populate(){
-		System.out.println("Creando Objeto Aplicación en la Base de Datos");
-		GestionRequisito app= GestionRequisito.getSistema();
-		repositorioGestReq.saveAndFlush(app);
-	}
+//	@PostConstruct // La anotación PostConstruct se utiliza en un método que debe ejecutarse tras una inyección de dependencia para efectuar cualquier inicialización
+//	@Transactional
+//	public void populate(){
+//		System.out.println("Creando Objeto Aplicación en la Base de Datos");
+//		GestionRequisito app= GestionRequisito.getSistema();
+//		repositorioGestReq.saveAndFlush(app);
+//	}
 	@Transactional
 	public List<GestionRequisito> obtenerTodosLosGestionRequisito(){
 		return repositorioGestReq.findAll();

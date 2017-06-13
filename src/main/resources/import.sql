@@ -8,9 +8,8 @@ INSERT INTO estado_requisito (id, descripcion_estado) VALUES (3,'Reabierto');
 INSERT INTO estado_requisito (id, descripcion_estado) VALUES (4,'EnProgreso');
 
 
-/*!40000 ALTER TABLE gestion_requisito DISABLE KEYS */;
 INSERT INTO gestion_requisito (id, nombre) VALUES (1,'Sistema Requisitos 2017');
-/*!40000 ALTER TABLE gestion_requisito ENABLE KEYS */;
+
 
 --
 -- Dumping data for table `proyecto`
