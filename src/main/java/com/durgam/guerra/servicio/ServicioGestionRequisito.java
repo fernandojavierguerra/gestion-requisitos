@@ -29,7 +29,17 @@ public class ServicioGestionRequisito {
 	}
 	@Transactional
 	public void NuevoGestionRequisito(GestionRequisito app){
-		repositorioGestReq.saveAndFlush(app);	
+		repositorioGestReq.saveAndFlush(app);
 	}
+	
+	@Transactional
+	public void GrabarGestionRequisito(GestionRequisito app){
+		repositorioGestReq.saveAndFlush(app);
+	}
+	public GestionRequisito buscarGestionRequisitoPorId(long id) {
+
+		return repositorioGestReq.findOne(id);
+	}
+	
 }
 

@@ -21,7 +21,7 @@ public class Proyecto {
 //	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 //	private List<Requisito> requisitos= new ArrayList<Requisito>();
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	private GestionRequisito aplicacion;
 	
 	public Proyecto() {
