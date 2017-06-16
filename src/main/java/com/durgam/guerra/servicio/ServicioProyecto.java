@@ -2,25 +2,31 @@ package com.durgam.guerra.servicio;
 
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import com.durgam.guerra.dominio.GestionRequisito;
 import com.durgam.guerra.dominio.Proyecto;
-import com.durgam.guerra.dominio.RequisitoCompuesto;
-import com.durgam.guerra.dominio.RequisitoSimple;
+//import com.durgam.guerra.dominio.RequisitoCompuesto;
+//import com.durgam.guerra.dominio.RequisitoSimple;
 import com.durgam.guerra.repositorio.RepositorioProyecto;
+
 @Service
 @Repository
 public class ServicioProyecto {
+//	@PersistenceContext	(name = "persistencia")
+//	private EntityManager entityManager;
+	
 	@Autowired
 	private RepositorioProyecto repositorioProyecto;
 	@PostConstruct // La anotación PostConstruct se utiliza en un método que debe ejecutarse tras una inyección de dependencia para efectuar cualquier inicialización
 	@Transactional
 	public void populate(){
-		GestionRequisito app= GestionRequisito.getSistema();
-		System.out.println("Creando Proyectos en la Base de Datos");
+//		GestionRequisito app= GestionRequisito.getSistema();
+//		System.out.println("Creando Proyectos en la Base de Datos");
 //		Proyecto proyecto1 = new Proyecto ("Proyecto 1", "Cambio de version de BBDD");
 //		Proyecto proyecto2 = new Proyecto ("Proyecto 2", "Proyecto Semaforos");
 //		Proyecto proyecto3 = new Proyecto ("Proyecto 3", "Sistema Contable");
@@ -59,6 +65,7 @@ public class ServicioProyecto {
 	public List<Proyecto> obtenerTodosLosProyectos() {
 		return repositorioProyecto.findAll();
 	}
+	
 	
 	@Transactional
 	public void borrarProyecto(Proyecto proyecto){

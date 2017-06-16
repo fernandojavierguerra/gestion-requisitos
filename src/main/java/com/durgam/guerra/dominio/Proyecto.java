@@ -18,8 +18,8 @@ public class Proyecto {
 	private String nombreProyecto;
 	private String descripcionProyecto;
 	
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
-	private List<Requisito> requisitos= new ArrayList<Requisito>();
+//	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+//	private List<Requisito> requisitos= new ArrayList<Requisito>();
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	private GestionRequisito aplicacion;
@@ -56,20 +56,20 @@ public class Proyecto {
 		this.descripcionProyecto = descripcionProyecto;
 	}
 
-	public List<Requisito> getRequisitos() {
-		return requisitos;
-	}
-
-	public void setRequisitos(List<Requisito> requisitos) {
-		this.requisitos = requisitos;
-	}	
-	public String mostrarRequisitos(){
-		String nombre="";
-		for (int i = 0; i < this.getRequisitos().size(); i++){
-				nombre= nombre + this.getRequisitos().get(i).getNombre();
-		}
-		return nombre;
-	}
+//	public List<Requisito> getRequisitos() {
+//		return requisitos;
+//	}
+//
+//	public void setRequisitos(List<Requisito> requisitos) {
+//		this.requisitos = requisitos;
+//	}	
+//	public String mostrarRequisitos(){
+//		String nombre="";
+//		for (int i = 0; i < this.getRequisitos().size(); i++){
+//				nombre= nombre + this.getRequisitos().get(i).getNombre();
+//		}
+//		return nombre;
+//	}
 
 	public GestionRequisito getAplicacion() {
 		return aplicacion;
@@ -78,9 +78,9 @@ public class Proyecto {
 	public void setAplicacion(GestionRequisito aplicacion) {
 		this.aplicacion = aplicacion;
 	}
-	public void agregarRequisito(Requisito requisito) {
-		this.requisitos.add(requisito);
-	}
+//	public void agregarRequisito(Requisito requisito) {
+//		this.requisitos.add(requisito);
+//	}
 	
 }
 
