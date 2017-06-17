@@ -16,51 +16,51 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-@Configuration
-@EnableJpaRepositories(
-        basePackages = {"com.durgam.guerra.repositorio"},
-        entityManagerFactoryRef = "entityManagerFactory", 
-        transactionManagerRef = "transactionManager")
-
-@EnableTransactionManagement
+//@Configuration
+//@EnableJpaRepositories(
+//        basePackages = {"com.durgam.guerra.repositorio"},
+//        entityManagerFactoryRef = "entityManagerFactory", 
+//        transactionManagerRef = "transactionManager")
+//
+//@EnableTransactionManagement
 public class ConfiguracionMySQL {
 	
-    @Bean(name = "transactionManager")
-    @Primary
-    public PlatformTransactionManager transactionManager() {
-        return new JpaTransactionManager(entityManagerFactory().getObject());
-    }
-
-    @Bean(name = "entityManagerFactory")
-    @Primary
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
-
-        HibernateJpaVendorAdapter jpaVendorAdapter = new HibernateJpaVendorAdapter();
-
-        LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
-        factoryBean.setDataSource(dataSource());
-        factoryBean.setJpaVendorAdapter(jpaVendorAdapter);
-        factoryBean.setJpaProperties(hibernateProperties());
-
-        factoryBean.setPackagesToScan("com.durgam.guerra.dominio");
-        factoryBean.setPersistenceUnitName("persistencia");
-
-        return factoryBean;
-    }
-
-    @Primary
-    @Bean(name = "dataSource")
-    @ConfigurationProperties(prefix = "datasource")
-    public DataSource dataSource() {
-        return DataSourceBuilder
-                .create()
-                .build();
-    }
-
-    private Properties hibernateProperties() {
-        final Properties hibernateProperties = new Properties();
-        hibernateProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
-        hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "create");
-        return hibernateProperties;
-    }
+//    @Bean(name = "transactionManager")
+//    @Primary
+//    public PlatformTransactionManager transactionManager() {
+//        return new JpaTransactionManager(entityManagerFactory().getObject());
+//    }
+//
+//    @Bean(name = "entityManagerFactory")
+//    @Primary
+//    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
+//
+//        HibernateJpaVendorAdapter jpaVendorAdapter = new HibernateJpaVendorAdapter();
+//
+//        LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
+//        factoryBean.setDataSource(dataSource());
+//        factoryBean.setJpaVendorAdapter(jpaVendorAdapter);
+//        factoryBean.setJpaProperties(hibernateProperties());
+//
+//        factoryBean.setPackagesToScan("com.durgam.guerra.dominio");
+//        factoryBean.setPersistenceUnitName("persistencia");
+//
+//        return factoryBean;
+//    }
+//
+//    @Primary
+//    @Bean(name = "dataSource")
+//    @ConfigurationProperties(prefix = "datasource")
+//    public DataSource dataSource() {
+//        return DataSourceBuilder
+//                .create()
+//                .build();
+//    }
+//
+//    private Properties hibernateProperties() {
+//        final Properties hibernateProperties = new Properties();
+//        hibernateProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
+//        hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "create");
+//        return hibernateProperties;
+//    }
 }

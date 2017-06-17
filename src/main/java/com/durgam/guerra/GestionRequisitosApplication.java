@@ -18,13 +18,13 @@ public class GestionRequisitosApplication {
 //		GestionRequisito app = GestionRequisito.getSistema();
 //		System.out.println(app.getNombre());
 		
-		ServicioGestionRequisito servicioGestionRequisito = new ServicioGestionRequisito();
-		
-		GestionRequisito app = (servicioGestionRequisito.buscarGestionRequisitoPorId(1)).getSistema();
-		System.out.println(app.getNombre());
-		app.setNombre("App 2017");		
-		servicioGestionRequisito.GrabarGestionRequisito(app);
-		System.out.println(app.getNombre());
+//		ServicioGestionRequisito servicioGestionRequisito = new ServicioGestionRequisito();
+//		
+//		GestionRequisito app = (servicioGestionRequisito.buscarGestionRequisitoPorId(1)).getSistema();
+//		System.out.println(app.getNombre());
+//		app.setNombre("App 2017");		
+//		servicioGestionRequisito.GrabarGestionRequisito(app);
+//		System.out.println(app.getNombre());
 
 //		entityManager.getTransaction().begin();
 
