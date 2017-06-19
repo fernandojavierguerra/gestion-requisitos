@@ -34,7 +34,8 @@ public class ServicioGestionRequisito {
 	
 	@Transactional
 	public void GrabarGestionRequisito(GestionRequisito app){
-		repositorioGestReq.saveAndFlush(app);
+		//repositorioGestReq.saveAndFlush(app);
+		repositorioGestReq.save(app);
 	}
 	public GestionRequisito buscarGestionRequisitoPorId(long id) {
 
