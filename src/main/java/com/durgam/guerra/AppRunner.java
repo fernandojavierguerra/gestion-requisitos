@@ -23,7 +23,7 @@ public class AppRunner implements CommandLineRunner {
 	@Override
 	public void run(String... arg0) throws Exception {
 	
-		GestionRequisito app = (servicioGestionRequisito.buscarGestionRequisitoPorId(1)).getSistema();
+		GestionRequisito app = (servicioGestionRequisito.buscarGestionRequisitoPorId((long) 1));
 		System.out.println(app.getNombre());
 		app.setNombre("App 2017");		
 		servicioGestionRequisito.GrabarGestionRequisito(app);

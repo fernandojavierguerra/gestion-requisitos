@@ -71,9 +71,9 @@ public class Proyecto {
 //		return nombre;
 //	}
 
-	public GestionRequisito getAplicacion() {
-		return aplicacion;
-	}
+//	public GestionRequisito getAplicacion() {
+//		return aplicacion;
+//	}
 
 	public void setAplicacion(GestionRequisito aplicacion) {
 		this.aplicacion = aplicacion;

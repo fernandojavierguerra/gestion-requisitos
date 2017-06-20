@@ -21,18 +21,22 @@ public class GestionRequisito {
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER,mappedBy = "aplicacion")
 	private List<Proyecto> proyectos;
 	
-	//Por Singleton: El constructor es privado, no permite que se genere un constructor por defecto.
-	private GestionRequisito() {
-		this.setNombre(sistema_nombre);
-		this.proyectos=new ArrayList<Proyecto>();
-	}
+//	//Por Singleton: El constructor es privado, no permite que se genere un constructor por defecto.
+//	private GestionRequisito() {
+//		this.setNombre(sistema_nombre);
+//		this.proyectos=new ArrayList<Proyecto>();
+//	}
+//
+//	public static GestionRequisito getSistema() {
+//	 if (miapp==null) {
+//		 miapp=new GestionRequisito();
+//	 }
+//	 	return miapp;
+//	 }
 
-	public static GestionRequisito getSistema() {
-	 if (miapp==null) {
-		 miapp=new GestionRequisito();
-	 }
-	 	return miapp;
-	 }
+	private GestionRequisito() {
+
+	}
 	
 	public void agregarProyecto(Proyecto proyecto) {
 		this.proyectos.add(proyecto);
