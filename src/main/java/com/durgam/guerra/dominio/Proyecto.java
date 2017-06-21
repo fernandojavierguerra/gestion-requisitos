@@ -25,6 +25,7 @@ public class Proyecto {
 	private GestionRequisito aplicacion;
 	
 	public Proyecto() {
+		
 	}
 	
 	public Proyecto(String nombreProyecto, String descripcionProyecto) {
