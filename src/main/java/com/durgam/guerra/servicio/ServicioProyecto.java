@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import com.durgam.guerra.dominio.GestionRequisito;
 import com.durgam.guerra.dominio.Proyecto;
+import com.durgam.guerra.repositorio.RepositorioGestionRequisito;
 //import com.durgam.guerra.dominio.RequisitoCompuesto;
 //import com.durgam.guerra.dominio.RequisitoSimple;
 import com.durgam.guerra.repositorio.RepositorioProyecto;
@@ -22,6 +23,11 @@ public class ServicioProyecto {
 	
 	@Autowired
 	private RepositorioProyecto repositorioProyecto;
+	
+	@Autowired
+	private ServicioGestionRequisito servicioGestionRequisito;
+
+
 	@PostConstruct // La anotación PostConstruct se utiliza en un método que debe ejecutarse tras una inyección de dependencia para efectuar cualquier inicialización
 	@Transactional
 	public void populate(){
@@ -77,14 +83,26 @@ public class ServicioProyecto {
 		repositorioProyecto.delete(id);
 	}
 	
-	@Transactional
+	//@Transactional
 	public void NuevoProyecto(Proyecto proyecto){
+		//GestionRequisito gestionRequisito = (servicioGestionRequisito.buscarGestionRequisitoPorId( (long) 1));
+		//proyecto.setAplicacion(gestionRequisito);
+		//gestionRequisito.agregarProyecto(proyecto);
+		
 		repositorioProyecto.save(proyecto);
+		//repositorioProyecto.saveAndFlush(proyecto);
+//		GestionRequisito gestionRequisito = (servicioGestionRequisito.buscarGestionRequisitoPorId((long) 1));
+//		servicioGestionRequisito.GrabarGestionRequisito(gestionRequisito);
 	}
 	
-	@Transactional
+	//@Transactional
 	public Proyecto NuevoProyecto(){
-			return new Proyecto();
+		return new Proyecto();
+
+//		GestionRequisito gestionRequisito = (servicioGestionRequisito.buscarGestionRequisitoPorId((long) 1));
+//		Proyecto proyecto = new Proyecto (gestionRequisito);
+//		gestionRequisito.agregarProyecto(proyecto);
+//		return proyecto;
 	}
 	
 	@Transactional
@@ -92,4 +110,5 @@ public class ServicioProyecto {
 			return repositorioProyecto.findOne(id);
 	}
 }
+
 

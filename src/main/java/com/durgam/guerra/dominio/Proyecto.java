@@ -18,11 +18,12 @@ public class Proyecto {
 	private String nombreProyecto;
 	private String descripcionProyecto;
 	
-//	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
-//	private List<Requisito> requisitos= new ArrayList<Requisito>();
-	
 	@ManyToOne(fetch = FetchType.EAGER)
 	private GestionRequisito aplicacion;
+	
+//	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+//	private List<Requisito> requisitos= new ArrayList<Requisito>();
+		
 	
 	public Proyecto() {
 		
@@ -32,6 +33,10 @@ public class Proyecto {
 		this.nombreProyecto = nombreProyecto;
 		this.descripcionProyecto = descripcionProyecto;
 	}
+
+//	public Proyecto(GestionRequisito gestionRequisito) {
+//		this.aplicacion = gestionRequisito;
+//	}
 
 	public Long getId() {
 		return id;
@@ -56,6 +61,14 @@ public class Proyecto {
 	public void setDescripcionProyecto(String descripcionProyecto) {
 		this.descripcionProyecto = descripcionProyecto;
 	}
+	
+	public GestionRequisito getAplicacion() {
+		return aplicacion;
+	}
+
+	public void setAplicacion(GestionRequisito aplicacion) {
+		this.aplicacion = aplicacion;
+	}
 
 //	public List<Requisito> getRequisitos() {
 //		return requisitos;
@@ -72,13 +85,7 @@ public class Proyecto {
 //		return nombre;
 //	}
 
-//	public GestionRequisito getAplicacion() {
-//		return aplicacion;
-//	}
 
-	public void setAplicacion(GestionRequisito aplicacion) {
-		this.aplicacion = aplicacion;
-	}
 //	public void agregarRequisito(Requisito requisito) {
 //		this.requisitos.add(requisito);
 //	}

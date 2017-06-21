@@ -17,7 +17,7 @@ public class GestionRequisito {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String nombre;
-	static final String sistema_nombre = "Sistema Gestion de Requisitos 2017";
+//	static final String sistema_nombre = "Sistema Gestion de Requisitos 2017";
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "aplicacion")
 	private List<Proyecto> proyectos;
@@ -44,11 +44,11 @@ public class GestionRequisito {
 		this.proyectos.add(proyecto);
 	}
 
-	public List<Proyecto> getDocumentos() {
+	public List<Proyecto> getProyectos() {
 		return proyectos;
 	}
 
-	public void setDocumentos(List<Proyecto> proyectos) {
+	public void setProyectos(List<Proyecto> proyectos) {
 		this.proyectos = proyectos;
 	}
 
