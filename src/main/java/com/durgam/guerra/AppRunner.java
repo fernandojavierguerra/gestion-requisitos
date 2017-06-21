@@ -25,7 +25,7 @@ public class AppRunner implements CommandLineRunner {
 	
 		GestionRequisito app = (servicioGestionRequisito.buscarGestionRequisitoPorId((long) 1));
 		System.out.println(app.getNombre());
-		app.setNombre("App 2017");		
+		app.setNombre("App 20173");		
 		servicioGestionRequisito.GrabarGestionRequisito(app);
 		System.out.println(app.getNombre());
 	}

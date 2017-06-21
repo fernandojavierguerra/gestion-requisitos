@@ -85,11 +85,12 @@ public class ServicioProyecto {
 	
 	//@Transactional
 	public void NuevoProyecto(Proyecto proyecto){
-		//GestionRequisito gestionRequisito = (servicioGestionRequisito.buscarGestionRequisitoPorId( (long) 1));
-		//proyecto.setAplicacion(gestionRequisito);
+		GestionRequisito gestionRequisito = (servicioGestionRequisito.buscarGestionRequisitoPorId((long) 1));
+		proyecto.setAplicacion(gestionRequisito);
+				repositorioProyecto.save(proyecto);
 		//gestionRequisito.agregarProyecto(proyecto);
-		
-		repositorioProyecto.save(proyecto);
+		//servicioGestionRequisito.GrabarGestionRequisito(gestionRequisito);
+
 		//repositorioProyecto.saveAndFlush(proyecto);
 //		GestionRequisito gestionRequisito = (servicioGestionRequisito.buscarGestionRequisitoPorId((long) 1));
 //		servicioGestionRequisito.GrabarGestionRequisito(gestionRequisito);
