@@ -37,6 +37,7 @@ public class ServicioGestionRequisito {
 		repositorioGestReq.saveAndFlush(app);
 		//repositorioGestReq.save(app);
 	}
+	@Transactional
 	public GestionRequisito buscarGestionRequisitoPorId(Long id) {
 
 		return repositorioGestReq.findOne(id);

@@ -6,6 +6,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import com.durgam.guerra.dominio.GestionRequisito;
+import com.durgam.guerra.dominio.Proyecto;
 import com.durgam.guerra.servicio.ServicioGestionRequisito;
 
 
@@ -24,9 +25,13 @@ public class AppRunner implements CommandLineRunner {
 	public void run(String... arg0) throws Exception {
 	
 		GestionRequisito app = (servicioGestionRequisito.buscarGestionRequisitoPorId((long) 1));
-		System.out.println(app.getNombre());
-		app.setNombre("App 20173");		
+//		System.out.println(app.getNombre());
+//		app.setNombre("App 20173");	
+		Proyecto nuevoProyecto = new Proyecto ("Proyecto 5", "Sistema de Gestion");
+		app.agregarProyecto(nuevoProyecto);
+		nuevoProyecto.setAplicacion(app);
+		
 		servicioGestionRequisito.GrabarGestionRequisito(app);
-		System.out.println(app.getNombre());
+//		System.out.println(app.getNombre());
 	}
 }

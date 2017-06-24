@@ -16,17 +16,15 @@
                 <th>Id</th>
                 <th>Nombre</th>
                 <th>Descripción</th>
-                <th>Aplicación</th>
            
                 <th>Ver</th>
                 <th>Editar</th>
                 <th>Eliminar</th>
             </tr>
             <tr th:each="proyecto : ${proyectos}">
-                <td th:text="${proyecto.id}"><a href="/product/${proyecto.id}">Id</a></td>
-                <td th:text="${proyecto.id}">Nombre</td>
-                <td th:text="${proyecto.nombreProyecto}">Descripción</td>
-                <td th:text="${proyecto.descripcionProyecto}">ion</td>
+                <td th:text="${proyecto.id}">Id</td>
+                <td th:text="${proyecto.nombreProyecto}">Nombre</td>
+                <td th:text="${proyecto.descripcionProyecto}">Descripción</td>
    
                 <td><a th:href="${'/proyecto/' + proyecto.id}">Ver</a></td>
                 <td><a th:href="${'/proyecto/edit/' + proyecto.id}">Editar</a></td>
