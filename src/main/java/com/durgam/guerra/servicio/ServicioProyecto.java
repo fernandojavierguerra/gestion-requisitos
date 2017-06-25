@@ -75,11 +75,16 @@ public class ServicioProyecto {
 	
 	@Transactional
 	public void borrarProyecto(Proyecto proyecto){
-		repositorioProyecto.delete(proyecto.getId());
+		GestionRequisito gestionRequisito = (servicioGestionRequisito.buscarGestionRequisitoPorId((long) 1));
+		gestionRequisito.quitarProyecto(proyecto);
+		//repositorioProyecto.delete(proyecto.getId());
+		repositorioProyecto.delete(proyecto);
+		
 	}
 	
 	@Transactional
 	public void borrarProyectoId(Long id){
+		
 		repositorioProyecto.delete(id);
 	}
 	
