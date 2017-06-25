@@ -15,16 +15,16 @@ public class ControladorProyecto {
 	@Autowired
 	private ServicioProyecto servicioProyecto;
 
-	@RequestMapping("proyecto/new")
+	@RequestMapping("/proyecto/new")
 	public String newProyecto(Model model) {
 		model.addAttribute("proyecto", servicioProyecto.NuevoProyecto());
 		return "proyectoform";
 	}
 
-	@RequestMapping(value = "proyecto", method = RequestMethod.POST)
+	@RequestMapping(value = "/proyecto", method = RequestMethod.POST)
 	public String saveProyecto(Proyecto proyecto) {
 		servicioProyecto.NuevoProyecto(proyecto);
-		return "redirect:/proyecto/" + proyecto.getId();
+		return "redirect:/proyectos";
 	}
 
 	@RequestMapping("proyecto/{id}")
@@ -39,19 +39,19 @@ public class ControladorProyecto {
 		return "proyectos";
 	}
 
-	@RequestMapping("proyecto/edit/{id}")
+	@RequestMapping("/proyecto/edit/{id}")
 	public String edit(@PathVariable Long id, Model model) {
 		model.addAttribute("proyecto", servicioProyecto.buscarProyectoPorId(id));
 		return "proyectoform";
 	}
 
-	@RequestMapping("proyecto/delete/{id}")
+	@RequestMapping("/proyecto/delete/{id}")
 	public String delete(@PathVariable Long id) {
 		servicioProyecto.borrarProyectoId(id);
 		return "redirect:/proyectos";
 	}
 
-	@RequestMapping("proyecto/nuevoRequisito/{id}")
+	@RequestMapping("/proyecto/nuevoRequisito/{id}")
 	public String agregarRequisito(@PathVariable Long id, Model model) {
 		model.addAttribute("proyecto", servicioProyecto.buscarProyectoPorId(id));
 		return "proyectoNuevoRequisito";

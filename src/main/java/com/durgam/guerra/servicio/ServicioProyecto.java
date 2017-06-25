@@ -88,22 +88,15 @@ public class ServicioProyecto {
 		GestionRequisito gestionRequisito = (servicioGestionRequisito.buscarGestionRequisitoPorId((long) 1));
 		proyecto.setAplicacion(gestionRequisito);
 		//repositorioProyecto.save(proyecto);
-		//gestionRequisito.agregarProyecto(proyecto);
+		gestionRequisito.agregarProyecto(proyecto);
 		servicioGestionRequisito.GrabarGestionRequisito(gestionRequisito);
 
-		//repositorioProyecto.saveAndFlush(proyecto);
-//		GestionRequisito gestionRequisito = (servicioGestionRequisito.buscarGestionRequisitoPorId((long) 1));
-//		servicioGestionRequisito.GrabarGestionRequisito(gestionRequisito);
 	}
 	
 	@Transactional
 	public Proyecto NuevoProyecto(){
 		return new Proyecto();
 
-//		GestionRequisito gestionRequisito = (servicioGestionRequisito.buscarGestionRequisitoPorId((long) 1));
-//		Proyecto proyecto = new Proyecto (gestionRequisito);
-//		gestionRequisito.agregarProyecto(proyecto);
-//		return proyecto;
 	}
 	
 	@Transactional
