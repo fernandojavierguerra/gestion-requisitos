@@ -78,7 +78,8 @@ public class ServicioProyecto {
 		GestionRequisito gestionRequisito = (servicioGestionRequisito.buscarGestionRequisitoPorId((long) 1));
 		gestionRequisito.quitarProyecto(proyecto);
 		//repositorioProyecto.delete(proyecto.getId());
-		repositorioProyecto.delete(proyecto);
+		//repositorioProyecto.delete(proyecto);
+		servicioGestionRequisito.GrabarGestionRequisito(gestionRequisito);
 		
 	}
 	

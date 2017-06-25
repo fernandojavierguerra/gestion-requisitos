@@ -71,6 +71,7 @@ public class GestionRequisito {
 	public void quitarProyecto(Proyecto proyecto) {
 		this.proyectos.remove(proyecto);
 		
+		
 	}
 	
 }
