@@ -100,12 +100,17 @@ public class ServicioProyecto {
 	}
 	
 	@Transactional
-	public void NuevoProyecto(Proyecto proyecto){
+	public void grabarProyecto(Proyecto proyecto){
+		//Graba un proyecto nuevo y actualizar uno existente
+		//busca el proyecto, si exiete lo actualiza
+		//si no existe lo crea
+		//repositorioProyecto.findOne(proyecto.getId())
+		
 		GestionRequisito gestionRequisito = (servicioGestionRequisito.buscarGestionRequisitoPorId((long) 1));
 		proyecto.setAplicacion(gestionRequisito);
-		//repositorioProyecto.save(proyecto);
 		gestionRequisito.agregarProyecto(proyecto);
 		servicioGestionRequisito.GrabarGestionRequisito(gestionRequisito);
+//		repositorioProyecto.save(proyecto);
 
 	}
 	

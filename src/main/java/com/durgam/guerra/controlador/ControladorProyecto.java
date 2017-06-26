@@ -21,13 +21,13 @@ public class ControladorProyecto {
 		return "proyectoform";
 	}
 
-	@RequestMapping(value = "/proyecto", method = RequestMethod.POST)
+	@RequestMapping(value = "/proyecto", method = RequestMethod.POST )
 	public String saveProyecto(Proyecto proyecto) {
-		servicioProyecto.NuevoProyecto(proyecto);
+		servicioProyecto.grabarProyecto(proyecto);
 		return "redirect:/proyectos";
 	}
 
-	@RequestMapping("proyecto/{id}")
+	@RequestMapping("/proyecto/{id}")
 	public String showProyecto(@PathVariable Long id, Model model) {
 		model.addAttribute("proyecto", servicioProyecto.buscarProyectoPorId(id));
 		return "proyectoshow";
