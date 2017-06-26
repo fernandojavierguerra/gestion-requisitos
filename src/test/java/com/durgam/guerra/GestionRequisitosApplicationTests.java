@@ -12,5 +12,10 @@ public class GestionRequisitosApplicationTests {
 	@Test
 	public void contextLoads() {
 	}
+	
+	@Test
+	public void bloqueoOptimista(){
+		
+	}
 
 }

@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Version;
 @Entity
 public class Proyecto {
 	
@@ -17,6 +18,9 @@ public class Proyecto {
 	private Long id;
 	private String nombreProyecto;
 	private String descripcionProyecto;
+	
+	@Version
+	private Long version;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	private GestionRequisito aplicacion;
@@ -33,10 +37,6 @@ public class Proyecto {
 		this.nombreProyecto = nombreProyecto;
 		this.descripcionProyecto = descripcionProyecto;
 	}
-
-//	public Proyecto(GestionRequisito gestionRequisito) {
-//		this.aplicacion = gestionRequisito;
-//	}
 
 	public Long getId() {
 		return id;

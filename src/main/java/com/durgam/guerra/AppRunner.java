@@ -33,5 +33,6 @@ public class AppRunner implements CommandLineRunner {
 		
 		servicioGestionRequisito.GrabarGestionRequisito(app);
 //		System.out.println(app.getNombre());
+		
 	}
 }
