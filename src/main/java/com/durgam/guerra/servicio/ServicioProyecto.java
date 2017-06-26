@@ -5,6 +5,9 @@ import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
@@ -75,11 +78,18 @@ public class ServicioProyecto {
 	
 	@Transactional
 	public void borrarProyecto(Proyecto proyecto){
+		
+		
 		GestionRequisito gestionRequisito = (servicioGestionRequisito.buscarGestionRequisitoPorId((long) 1));
 		gestionRequisito.quitarProyecto(proyecto);
-		//repositorioProyecto.delete(proyecto.getId());
-		//repositorioProyecto.delete(proyecto);
-		servicioGestionRequisito.GrabarGestionRequisito(gestionRequisito);
+		proyecto.setAplicacion(null);
+		
+//		servicioGestionRequisito.GrabarGestionRequisito(gestionRequisito);
+//		for (Proyecto proy : this.obtenerTodosLosProyectos()) {
+//			System.out.println("Proyecto: " + proy.toString());
+//			
+//		}
+		
 		
 	}
 	

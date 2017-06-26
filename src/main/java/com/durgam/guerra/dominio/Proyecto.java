@@ -70,6 +70,14 @@ public class Proyecto {
 		this.aplicacion = aplicacion;
 	}
 
+	@Override
+	public String toString() {
+		return "Proyecto [id=" + id + ", nombreProyecto=" + nombreProyecto + ", descripcionProyecto="
+				+ descripcionProyecto + "]";
+	}
+	
+	
+
 //	public List<Requisito> getRequisitos() {
 //		return requisitos;
 //	}

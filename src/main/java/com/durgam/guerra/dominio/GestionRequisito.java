@@ -19,7 +19,10 @@ public class GestionRequisito {
 	private String nombre;
 //	static final String sistema_nombre = "Sistema Gestion de Requisitos 2017";
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "aplicacion")
+	@OneToMany(cascade = CascadeType.ALL, 
+			fetch = FetchType.EAGER, 
+			mappedBy = "aplicacion",
+			orphanRemoval = true)
 	private List<Proyecto> proyectos;
 
 	// //Por Singleton: El constructor es privado, no permite que se genere un
@@ -71,6 +74,11 @@ public class GestionRequisito {
 	public void quitarProyecto(Proyecto proyecto) {
 		this.proyectos.remove(proyecto);
 		
+		
+	}
+
+	public void quitarProyecto(Long idProyecto) {
+		// TODO Auto-generated method stub
 		
 	}
 	
