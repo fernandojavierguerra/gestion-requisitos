@@ -6,6 +6,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
 import com.durgam.guerra.dominio.GestionRequisito;
 import com.durgam.guerra.repositorio.RepositorioGestionRequisito;
@@ -15,33 +16,45 @@ import com.durgam.guerra.repositorio.RepositorioGestionRequisito;
 public class ServicioGestionRequisito {
 	@Autowired
 	private RepositorioGestionRequisito repositorioGestReq;
-//	@PostConstruct // La anotación PostConstruct se utiliza en un método que debe ejecutarse tras una inyección de dependencia para efectuar cualquier inicialización
-//	@Transactional
-//	public void populate(){
-//		System.out.println("Creando Objeto Aplicación en la Base de Datos");
-//		GestionRequisito app= GestionRequisito.getSistema();
-//		repositorioGestReq.saveAndFlush(app);
-//	}
+
+	// @PostConstruct // La anotación PostConstruct se utiliza en un método que
+	// debe ejecutarse tras una inyección de dependencia para efectuar cualquier
+	// inicialización
+	// @Transactional
+	// public void populate(){
+	// System.out.println("Creando Objeto Aplicación en la Base de Datos");
+	// GestionRequisito app= GestionRequisito.getSistema();
+	// repositorioGestReq.saveAndFlush(app);
+	// }
 	@Transactional
-	public List<GestionRequisito> obtenerTodosLosGestionRequisito(){
+	public List<GestionRequisito> obtenerTodosLosGestionRequisito() {
 		return repositorioGestReq.findAll();
-		
+
 	}
+
 	@Transactional
-	public void NuevoGestionRequisito(GestionRequisito app){
+	public void NuevoGestionRequisito(GestionRequisito app) {
 		repositorioGestReq.saveAndFlush(app);
 	}
-	
+
 	@Transactional
-	public void GrabarGestionRequisito(GestionRequisito app){
-		repositorioGestReq.saveAndFlush(app);
-		//repositorioGestReq.save(app);
+	public void GrabarGestionRequisito(GestionRequisito app) {
+		try {
+			repositorioGestReq.saveAndFlush(app);
+		} catch (Exception ex) {
+			
+			TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+			System.out.println("Rollback");
+			
+		}
+
+		// repositorioGestReq.save(app);
 	}
+
 	@Transactional
 	public GestionRequisito buscarGestionRequisitoPorId(Long id) {
 
 		return repositorioGestReq.findOne(id);
 	}
-	
-}
 
+}

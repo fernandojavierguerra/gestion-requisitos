@@ -73,7 +73,7 @@ public class Proyecto {
 	@Override
 	public String toString() {
 		return "Proyecto [id=" + id + ", nombreProyecto=" + nombreProyecto + ", descripcionProyecto="
-				+ descripcionProyecto + "]";
+				+ descripcionProyecto + ", version=" + version + ", aplicacion=" + aplicacion + "]";
 	}
 
 	public void actualizarProyecto(String nombreProyecto, String descripcionProyecto) {
@@ -81,6 +81,8 @@ public class Proyecto {
 		this.setDescripcionProyecto(descripcionProyecto);
 		
 	}
+
+
 	
 	
 
