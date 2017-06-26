@@ -75,6 +75,12 @@ public class Proyecto {
 		return "Proyecto [id=" + id + ", nombreProyecto=" + nombreProyecto + ", descripcionProyecto="
 				+ descripcionProyecto + "]";
 	}
+
+	public void actualizarProyecto(String nombreProyecto, String descripcionProyecto) {
+		this.setNombreProyecto(nombreProyecto);
+		this.setDescripcionProyecto(descripcionProyecto);
+		
+	}
 	
 	
 

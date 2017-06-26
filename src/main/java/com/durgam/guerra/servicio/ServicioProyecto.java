@@ -128,15 +128,15 @@ public class ServicioProyecto {
 	@Transactional
 	public void grabarProyecto(Proyecto proyecto) {
 		// Graba un proyecto nuevo y actualizar uno existente
-		// busca el proyecto, si exiete lo actualiza
+		// busca el proyecto, si existe lo actualiza
 		// si no existe lo crea
 		GestionRequisito gestionRequisito = (servicioGestionRequisito.buscarGestionRequisitoPorId((long) 1));
 		if (repositorioProyecto.exists(proyecto.getId())) {
-			repositorioProyecto.save(proyecto);
-			//servicioGestionRequisito.GrabarGestionRequisito(gestionRequisito);
+			//repositorioProyecto.save(proyecto);
+			Proyecto proyectoExistente = repositorioProyecto.findOne(proyecto.getId());
+			proyectoExistente.actualizarProyecto(proyecto.getNombreProyecto(), proyecto.getDescripcionProyecto());
+			servicioGestionRequisito.GrabarGestionRequisito(gestionRequisito);
 		} else {
-
-			
 			proyecto.setAplicacion(gestionRequisito);
 			gestionRequisito.agregarProyecto(proyecto);
 			servicioGestionRequisito.GrabarGestionRequisito(gestionRequisito);
