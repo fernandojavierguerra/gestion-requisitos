@@ -131,17 +131,18 @@ public class ServicioProyecto {
 		// busca el proyecto, si existe lo actualiza
 		// si no existe lo crea
 		GestionRequisito gestionRequisito = (servicioGestionRequisito.buscarGestionRequisitoPorId((long) 1));
+		if (proyecto.getId()==null){
+			proyecto.setAplicacion(gestionRequisito);
+			gestionRequisito.agregarProyecto(proyecto);
+			servicioGestionRequisito.GrabarGestionRequisito(gestionRequisito);
+		}else{
 		if (repositorioProyecto.exists(proyecto.getId())) {
 			//repositorioProyecto.save(proyecto);
 			Proyecto proyectoExistente = repositorioProyecto.findOne(proyecto.getId());
 			proyectoExistente.actualizarProyecto(proyecto.getNombreProyecto(), proyecto.getDescripcionProyecto());
 			servicioGestionRequisito.GrabarGestionRequisito(gestionRequisito);
-		} else {
-			proyecto.setAplicacion(gestionRequisito);
-			gestionRequisito.agregarProyecto(proyecto);
-			servicioGestionRequisito.GrabarGestionRequisito(gestionRequisito);
 		}
-
+		}
 
 	}
 
