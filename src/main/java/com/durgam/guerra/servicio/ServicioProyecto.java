@@ -3,12 +3,14 @@ package com.durgam.guerra.servicio;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
+import javax.persistence.LockModeType;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Lock;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import com.durgam.guerra.dominio.GestionRequisito;
@@ -126,7 +128,7 @@ public class ServicioProyecto {
 	}
 
 	@Transactional
-	public void grabarProyecto(Proyecto proyecto) {
+		public void grabarProyecto(Proyecto proyecto) {
 		// Graba un proyecto nuevo y actualizar uno existente
 		// busca el proyecto, si existe lo actualiza
 		// si no existe lo crea
