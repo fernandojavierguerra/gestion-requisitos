@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
 import com.durgam.guerra.dominio.GestionRequisito;
+import com.durgam.guerra.dominio.Proyecto;
 import com.durgam.guerra.repositorio.RepositorioGestionRequisito;
 
 @Service
@@ -56,5 +57,16 @@ public class ServicioGestionRequisito {
 
 		return repositorioGestReq.findOne(id);
 	}
-
+	@Transactional
+	public GestionRequisito removerProyecto(GestionRequisito gestion, Proyecto proyecto) {
+		gestion.getProyectos().remove(proyecto);
+		proyecto.setAplicacion(null);
+		return gestion;
+	}
+	@Transactional
+	public GestionRequisito agregarProyecto(GestionRequisito gestion, Proyecto proyecto) {
+		gestion.getProyectos().add(proyecto);
+		proyecto.setAplicacion(gestion);
+		return gestion;
+	}
 }

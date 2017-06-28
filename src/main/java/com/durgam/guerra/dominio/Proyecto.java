@@ -70,19 +70,11 @@ public class Proyecto {
 		this.aplicacion = aplicacion;
 	}
 
-	@Override
-	public String toString() {
-		return "Proyecto [id=" + id + ", nombreProyecto=" + nombreProyecto + ", descripcionProyecto="
-				+ descripcionProyecto + ", version=" + version + ", aplicacion=" + aplicacion + "]";
-	}
-
-	public void actualizarProyecto(String nombreProyecto, String descripcionProyecto) {
-		this.setNombreProyecto(nombreProyecto);
-		this.setDescripcionProyecto(descripcionProyecto);
-		
-	}
-
-	
+	//@Override
+	//public String toString() {
+	//	return "Proyecto [id=" + id + ", nombreProyecto=" + nombreProyecto + ", descripcionProyecto="
+	//			+ descripcionProyecto + ", version=" + version + ", aplicacion=" + aplicacion + "]";
+	//}
 
 	public void setVersion(Long version) {
 		this.version = version;
@@ -92,10 +84,6 @@ public class Proyecto {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-
-	
-	
 
 //	public List<Requisito> getRequisitos() {
 //		return requisitos;

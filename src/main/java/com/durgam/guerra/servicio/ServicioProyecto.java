@@ -39,9 +39,6 @@ public class ServicioProyecto {
 
 	@Autowired
 	private ServicioGestionRequisito servicioGestionRequisito;
-	
-	
-
 	    
 	@PostConstruct // La anotación PostConstruct se utiliza en un método que
 					// debe ejecutarse tras una inyección de dependencia para
@@ -119,25 +116,17 @@ public class ServicioProyecto {
 
 	@Transactional
 	public void borrarProyecto(Proyecto proyecto) {
-
 		GestionRequisito gestionRequisito = (servicioGestionRequisito.buscarGestionRequisitoPorId((long) 1));
-		gestionRequisito.quitarProyecto(proyecto);
-		proyecto.setAplicacion(null);
-
-		// servicioGestionRequisito.GrabarGestionRequisito(gestionRequisito);
-		// for (Proyecto proy : this.obtenerTodosLosProyectos()) {
-		// System.out.println("Proyecto: " + proy.toString());
-		//
-		// }
-
+		gestionRequisito=servicioGestionRequisito.removerProyecto(gestionRequisito, proyecto);
 	}
 
 	@Transactional
 	public void borrarProyectoId(Long id) {
-
-		repositorioProyecto.delete(id);
+		Proyecto proyecto=this.buscarProyectoPorId(id);
+		this.borrarProyecto(proyecto);
 	}
 	
+
 	@Transactional
 		public void grabarProyecto(Proyecto proyecto) {
 		// Graba un proyecto nuevo y actualizar uno existente
@@ -145,33 +134,35 @@ public class ServicioProyecto {
 		// si no existe lo crea
 		GestionRequisito gestionRequisito = (servicioGestionRequisito.buscarGestionRequisitoPorId((long) 1));
 		if (proyecto.getId()==null){
-			proyecto.setAplicacion(gestionRequisito);
-			gestionRequisito.agregarProyecto(proyecto);
-			servicioGestionRequisito.GrabarGestionRequisito(gestionRequisito);
-		}else{
-			if (repositorioProyecto.exists(proyecto.getId())) {
-				//repositorioProyecto.save(proyecto);
-				Proyecto proyectoExistente = repositorioProyecto.findOne(proyecto.getId());
-				proyectoExistente.actualizarProyecto(proyecto.getNombreProyecto(), proyecto.getDescripcionProyecto());
-				 //Para probar la concurrencia
-				for (int i=0;i<100000;i++){
+			gestionRequisito=servicioGestionRequisito.agregarProyecto(gestionRequisito, proyecto);
+			
+		}else	{
+				if (repositorioProyecto.exists(proyecto.getId())) {
+					Proyecto proyectoExistente = repositorioProyecto.findOne(proyecto.getId());
+					proyectoExistente=this.actualizarProyecto(proyectoExistente, proyecto);
+					//Para probar la concurrencia
+					for (int i=0;i<100000;i++){
 					System.out.println(i);
+					}
+				
 				}
-				servicioGestionRequisito.GrabarGestionRequisito(gestionRequisito);
 			}
-			}
-		}
-
-	
+		servicioGestionRequisito.GrabarGestionRequisito(gestionRequisito);
+	}
 
 	@Transactional
 	public Proyecto NuevoProyecto() {
 		return new Proyecto();
-
 	}
 
 	@Transactional
 	public Proyecto buscarProyectoPorId(Long id) {
 		return repositorioProyecto.findOne(id);
+	}
+	
+	public Proyecto actualizarProyecto(Proyecto proyecto, Proyecto proyectoActual){
+		proyecto.setNombreProyecto(proyectoActual.getNombreProyecto());
+		proyecto.setDescripcionProyecto(proyectoActual.getDescripcionProyecto());
+		return proyecto;
 	}
 }

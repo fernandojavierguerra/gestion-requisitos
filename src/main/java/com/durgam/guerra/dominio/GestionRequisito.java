@@ -43,10 +43,6 @@ public class GestionRequisito {
 
 	}
 
-	public void agregarProyecto(Proyecto proyecto) {
-		this.proyectos.add(proyecto);
-	}
-
 	public List<Proyecto> getProyectos() {
 		return proyectos;
 	}
@@ -69,17 +65,6 @@ public class GestionRequisito {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public void quitarProyecto(Proyecto proyecto) {
-		this.proyectos.remove(proyecto);
-		
-		
-	}
-
-	public void quitarProyecto(Long idProyecto) {
-		// TODO Auto-generated method stub
-		
 	}
 	
 }

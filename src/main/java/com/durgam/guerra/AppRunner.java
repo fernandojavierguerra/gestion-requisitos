@@ -28,7 +28,8 @@ public class AppRunner implements CommandLineRunner {
 //		System.out.println(app.getNombre());
 //		app.setNombre("App 20173");	
 		Proyecto nuevoProyecto = new Proyecto ("Proyecto 5", "Sistema de Gestion");
-		app.agregarProyecto(nuevoProyecto);
+		app.getProyectos().add(nuevoProyecto);
+	
 		nuevoProyecto.setAplicacion(app);
 		
 		servicioGestionRequisito.GrabarGestionRequisito(app);
