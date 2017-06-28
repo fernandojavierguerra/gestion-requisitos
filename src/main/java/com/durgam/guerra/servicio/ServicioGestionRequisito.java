@@ -45,8 +45,7 @@ public class ServicioGestionRequisito {
 		} catch (Exception ex) {
 			
 			TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
-			System.out.println("Rollback");
-			
+			System.out.println("Rollback");		
 		}
 
 		// repositorioGestReq.save(app);
