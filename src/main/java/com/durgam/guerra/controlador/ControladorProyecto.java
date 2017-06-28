@@ -53,8 +53,6 @@ public class ControladorProyecto {
 
 	@RequestMapping("/proyecto/delete/{id}")
 	public String delete(@PathVariable Long id) {
-		//Proyecto proyecto = servicioProyecto.buscarProyectoPorId(id);
-		//servicioProyecto.borrarProyecto(proyecto);
 		servicioProyecto.borrarProyectoId(id);
 		return "redirect:/proyectos";
 	}

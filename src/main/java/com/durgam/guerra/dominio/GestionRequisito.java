@@ -17,27 +17,12 @@ public class GestionRequisito {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String nombre;
-//	static final String sistema_nombre = "Sistema Gestion de Requisitos 2017";
 
 	@OneToMany(cascade = CascadeType.ALL, 
 			fetch = FetchType.EAGER, 
 			mappedBy = "aplicacion",
 			orphanRemoval = true)
 	private List<Proyecto> proyectos;
-
-	// //Por Singleton: El constructor es privado, no permite que se genere un
-	// constructor por defecto.
-	// private GestionRequisito() {
-	// this.setNombre(sistema_nombre);
-	// this.proyectos=new ArrayList<Proyecto>();
-	// }
-	//
-	// public static GestionRequisito getSistema() {
-	// if (miapp==null) {
-	// miapp=new GestionRequisito();
-	// }
-	// return miapp;
-	// }
 
 	private GestionRequisito() {
 

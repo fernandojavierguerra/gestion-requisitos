@@ -81,8 +81,7 @@ public class Proyecto {
 	}
 
 	public Long getVersion() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.version;
 	}
 
 //	public List<Requisito> getRequisitos() {

@@ -31,8 +31,7 @@ import com.durgam.guerra.repositorio.RepositorioProyecto;
 @Service
 @Repository
 public class ServicioProyecto {
-	// @PersistenceContext (name = "persistencia")
-	// private EntityManager entityManager;
+
 
 	@Autowired
 	private RepositorioProyecto repositorioProyecto;

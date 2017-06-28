@@ -24,16 +24,14 @@ public class AppRunner implements CommandLineRunner {
 	@Override
 	public void run(String... arg0) throws Exception {
 	
-		GestionRequisito app = (servicioGestionRequisito.buscarGestionRequisitoPorId((long) 1));
-//		System.out.println(app.getNombre());
-//		app.setNombre("App 20173");	
-		Proyecto nuevoProyecto = new Proyecto ("Proyecto 5", "Sistema de Gestion");
-		app.getProyectos().add(nuevoProyecto);
-	
-		nuevoProyecto.setAplicacion(app);
-		
-		servicioGestionRequisito.GrabarGestionRequisito(app);
-//		System.out.println(app.getNombre());
+//		GestionRequisito app = (servicioGestionRequisito.buscarGestionRequisitoPorId((long) 1));
+//		Proyecto nuevoProyecto = new Proyecto ("Proyecto 5", "Sistema de Gestion");
+//		app.getProyectos().add(nuevoProyecto);
+//	
+//		nuevoProyecto.setAplicacion(app);
+//	
+//		servicioGestionRequisito.GrabarGestionRequisito(app);
+
 		
 	}
 }
