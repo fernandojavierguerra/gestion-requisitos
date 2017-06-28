@@ -153,7 +153,7 @@ public class ServicioProyecto {
 				//repositorioProyecto.save(proyecto);
 				Proyecto proyectoExistente = repositorioProyecto.findOne(proyecto.getId());
 				proyectoExistente.actualizarProyecto(proyecto.getNombreProyecto(), proyecto.getDescripcionProyecto());
-				 
+				 //Para probar la concurrencia
 				for (int i=0;i<100000;i++){
 					System.out.println(i);
 				}
