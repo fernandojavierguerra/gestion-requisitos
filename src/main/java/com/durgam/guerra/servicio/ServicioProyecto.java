@@ -5,20 +5,28 @@ import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 import javax.persistence.LockModeType;
 import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
 
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.StaleObjectStateException;
+import org.hibernate.Transaction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Lock;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.durgam.guerra.dominio.GestionRequisito;
 import com.durgam.guerra.dominio.Proyecto;
 import com.durgam.guerra.repositorio.RepositorioGestionRequisito;
 //import com.durgam.guerra.dominio.RequisitoCompuesto;
 //import com.durgam.guerra.dominio.RequisitoSimple;
 import com.durgam.guerra.repositorio.RepositorioProyecto;
+
 
 @Service
 @Repository
@@ -31,7 +39,10 @@ public class ServicioProyecto {
 
 	@Autowired
 	private ServicioGestionRequisito servicioGestionRequisito;
+	
+	
 
+	    
 	@PostConstruct // La anotación PostConstruct se utiliza en un método que
 					// debe ejecutarse tras una inyección de dependencia para
 					// efectuar cualquier inicialización
@@ -126,7 +137,7 @@ public class ServicioProyecto {
 
 		repositorioProyecto.delete(id);
 	}
-
+	
 	@Transactional
 		public void grabarProyecto(Proyecto proyecto) {
 		// Graba un proyecto nuevo y actualizar uno existente
@@ -138,15 +149,20 @@ public class ServicioProyecto {
 			gestionRequisito.agregarProyecto(proyecto);
 			servicioGestionRequisito.GrabarGestionRequisito(gestionRequisito);
 		}else{
-		if (repositorioProyecto.exists(proyecto.getId())) {
-			//repositorioProyecto.save(proyecto);
-			Proyecto proyectoExistente = repositorioProyecto.findOne(proyecto.getId());
-			proyectoExistente.actualizarProyecto(proyecto.getNombreProyecto(), proyecto.getDescripcionProyecto());
-			servicioGestionRequisito.GrabarGestionRequisito(gestionRequisito);
-		}
+			if (repositorioProyecto.exists(proyecto.getId())) {
+				//repositorioProyecto.save(proyecto);
+				Proyecto proyectoExistente = repositorioProyecto.findOne(proyecto.getId());
+				proyectoExistente.actualizarProyecto(proyecto.getNombreProyecto(), proyecto.getDescripcionProyecto());
+				 
+				for (int i=0;i<100000;i++){
+					System.out.println(i);
+				}
+				servicioGestionRequisito.GrabarGestionRequisito(gestionRequisito);
+			}
+			}
 		}
 
-	}
+	
 
 	@Transactional
 	public Proyecto NuevoProyecto() {

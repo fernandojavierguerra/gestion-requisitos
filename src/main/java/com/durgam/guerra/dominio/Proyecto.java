@@ -82,6 +82,17 @@ public class Proyecto {
 		
 	}
 
+	
+
+	public void setVersion(Long version) {
+		this.version = version;
+	}
+
+	public Long getVersion() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 	
 	
