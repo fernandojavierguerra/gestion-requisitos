@@ -74,7 +74,6 @@ public class ServicioStakeholder {
 		servicioRequisito.agregarRequisitoSimpleaCompuesto(requisitoSimpleCompuesto1, requisitoComp1);
 		servicioGestionRequisito.agregarProyecto(gestion, proyecto);
 		
-		
 		servicioGestionRequisito.GrabarGestionRequisito(gestion);
 		
 	}

@@ -9,6 +9,7 @@ import com.durgam.guerra.dominio.EstadoRequisito;
 import com.durgam.guerra.dominio.GestionRequisito;
 import com.durgam.guerra.dominio.Proyecto;
 import com.durgam.guerra.dominio.Requisito;
+import com.durgam.guerra.dominio.RequisitoAbierto;
 import com.durgam.guerra.dominio.RequisitoCerrado;
 import com.durgam.guerra.dominio.RequisitoCompuesto;
 import com.durgam.guerra.dominio.RequisitoEnProgreso;
@@ -35,6 +36,8 @@ public class ServicioRequisito {
 	private RepositorioRequisitoCompuesto repositorioCompuesto;
 	@Autowired
 	private RepositorioRequisitoSimple repositorioSimple;
+	@Autowired
+	private ServicioGestionRequisito servicioGestionRequisito;
 	
 	@Transactional
     public void borrarRequisitoPorId(Long id) {
@@ -104,10 +107,44 @@ public class ServicioRequisito {
 	}
 	
 	@Transactional
-	public void grabarRequisito(Requisito requisito){		
-		this.NuevoRequisito(requisito);
+	public void grabarRequisito(Requisito requisito){
+		
+		//Proyecto proyecto = servicioProyecto.buscarProyectoPorId(requisito.getId());
+		if (requisito.getId()==null){
+			
+			//Agregar nuevo requisito con proyecto
+			//gestionRequisito=servicioGestionRequisito.agregarProyecto(gestionRequisito, proyecto);
+			//proyecto.getRequisitos().add(requisito);
+		//requisito.setProyecto(proyecto);
+			this.NuevoRequisito(requisito);
+		}else	{
+				if (repositorioRequisito.exists(requisito.getId())) {
+					Requisito requisitoExistente = repositorioRequisito.findOne(requisito.getId());
+					requisitoExistente=this.actualizarRequisito(requisitoExistente, requisito);
+					//Para probar la concurrencia
+					for (int i=0;i<100000;i++){
+					System.out.println(i);
+					}
+				
+				}
+			}
+		//servicioGestionRequisito.GrabarGestionRequisito(gestionRequisito);
+		
+		
+		
+		
 	}
-	
+	@Transactional
+	private Requisito actualizarRequisito(Requisito requisitoExistente, Requisito requisito) {
+		// TODO Auto-generated method stub
+		 requisitoExistente.setNecesidad(requisito.getNecesidad());
+		 requisitoExistente.setNombre(requisito.getNombre());
+		 requisitoExistente.setPrioridad(requisito.getPrioridad());
+		 requisitoExistente.setRiesgo(requisito.getRiesgo());
+		 
+		 return requisitoExistente;
+	}
+
 	@Transactional
 	public void agregarRequisitoSimpleaCompuesto(RequisitoSimple requisitoSimple,RequisitoCompuesto requisitoCompuesto){		
 		requisitoSimple.setEstado(requisitoCompuesto.getEstado());

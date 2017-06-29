@@ -46,7 +46,10 @@
                     <select name="proyecto_id">
 		<option th:each="proyecto : ${proyectos}" 
 			  th:value="${proyecto.id}" 
-			  th:text="${proyecto.nombreProyecto}" />
+			  th:text="${proyecto.nombreProyecto}"
+			
+			   />
+			  
 	</select>
                
                 </div>
