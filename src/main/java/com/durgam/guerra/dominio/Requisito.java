@@ -1,4 +1,6 @@
 package com.durgam.guerra.dominio;
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -7,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Version;
@@ -29,6 +32,9 @@ public class Requisito {
 	private Long version;
 	@OneToOne(cascade = (CascadeType.ALL))
 	private EstadoRequisito estado;
+	
+	@ManyToMany(cascade = CascadeType.ALL)
+	private List<Stakeholder> stakeholder;
 
 	public Requisito() {
 			
@@ -117,6 +123,14 @@ public class Requisito {
 
 	public void setProyecto(Proyecto proyecto) {
 		this.proyecto = proyecto;
+	}
+
+	public List<Stakeholder> getStakeholder() {
+		return stakeholder;
+	}
+
+	public void setStakeholder(List<Stakeholder> stakeholder) {
+		this.stakeholder = stakeholder;
 	}
 
 }

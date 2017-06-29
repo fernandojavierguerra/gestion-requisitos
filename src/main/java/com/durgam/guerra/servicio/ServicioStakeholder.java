@@ -39,11 +39,13 @@ public class ServicioStakeholder {
 		RequisitoSimple requisito1= new RequisitoSimple(0, "Compra Materiales","Contruccion de Obrador","Alta","Clima Frio",null);
 		RequisitoSimple requisito2= new RequisitoSimple(0, "Migración Linux","Reducción de costos Licencia","Media","Multas",null);
 		RequisitoSimple requisito3= new RequisitoSimple(0, "Armado de Estantes","Exponer","Baja","Ninguno",null);
-		RequisitoCompuesto requisitoComp1= new RequisitoCompuesto(0, "Fase de Desarrooo","Contrata","Baja","Ninguno",null);
+		RequisitoCompuesto requisitoComp1= new RequisitoCompuesto(0, "Fase de Desarro","Contrata","Baja","Ninguno",null);
+		
 		RequisitoSimple requisitoSimpleCompuesto1= new RequisitoSimple(0, "FirmaContrato","Pagos","Baja","Ninguno",null);
-		analistaJunior.agregarRequisito(requisito1);
-		analistaJunior.agregarRequisito(requisito2);
-		analistaSenior.agregarRequisito(requisito3);
+		
+		//analistaJunior.agregarRequisito(requisito1);
+		//analistaJunior.agregarRequisito(requisito2);
+		//analistaSenior.agregarRequisito(requisito3);
 		//repositorioStakeholder.saveAndFlush(analistaJunior);
 		//repositorioStakeholder.saveAndFlush(analistaSenior);
 		EstadoRequisito estado=RequisitoAbierto.getEstado();
@@ -55,20 +57,24 @@ public class ServicioStakeholder {
 		requisito1.setEstado(estado);
 		requisitoComp1.setEstado(estado);
 		
+		//requisitoSimpleCompuesto1.setEstado(estado);
+		
 		 
 		Proyecto proyecto= new Proyecto("Proyecto Alfa", "Alfa Proyect");
 		
 		GestionRequisito gestion = (servicioGestionRequisito.buscarGestionRequisitoPorId((long) 1));
 		
-		//gestion.getProyectos().get(0).getRequisitos().add(requisito4);
-		
 		servicioProyecto.agregarRequisito(gestion.getProyectos().get(0), requisito4); 
 		servicioProyecto.agregarRequisito(gestion.getProyectos().get(0), requisito3); 
 		servicioProyecto.agregarRequisito(gestion.getProyectos().get(1), requisito2); 
 		servicioProyecto.agregarRequisito(gestion.getProyectos().get(2), requisito1); 
+		
+	
 		servicioProyecto.agregarRequisito(gestion.getProyectos().get(2), requisitoComp1); 
-		servicioGestionRequisito.agregarProyecto(gestion, proyecto);
 		servicioRequisito.agregarRequisitoSimpleaCompuesto(requisitoSimpleCompuesto1, requisitoComp1);
+		servicioGestionRequisito.agregarProyecto(gestion, proyecto);
+		
+		
 		servicioGestionRequisito.GrabarGestionRequisito(gestion);
 		
 	}
@@ -90,6 +96,12 @@ public class ServicioStakeholder {
 	public Stakeholder NuevoStakeholder(){
 		return new Stakeholder();
 	}
+	
+	@Transactional
+	public void agregarRequisitoStakeholder(Stakeholder stakeholder, Requisito requisito){
+		stakeholder.getRequisitos().add(requisito);
+		requisito.getStakeholder().add(stakeholder);
+		}
 	
 	@Transactional
 	public void NuevoStakeholder(Stakeholder stakeholder){
