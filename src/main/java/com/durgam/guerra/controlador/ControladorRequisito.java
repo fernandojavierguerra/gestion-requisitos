@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import com.durgam.guerra.dominio.RequisitoCompuesto;
 import com.durgam.guerra.dominio.RequisitoSimple;
+import com.durgam.guerra.servicio.ServicioProyecto;
 import com.durgam.guerra.servicio.ServicioRequisito;
 
 @Controller
@@ -14,6 +15,8 @@ public class ControladorRequisito {
 	
 	@Autowired
 	private ServicioRequisito servicioRequisito;
+	@Autowired
+	private ServicioProyecto servicioProyecto;
 	
 	 @RequestMapping(value = "/requisitos", method = RequestMethod.GET)
 	    public String list(Model model){
@@ -24,6 +27,8 @@ public class ControladorRequisito {
 		@RequestMapping("requisitos/newSimple")
 	    public String newRequisitoSimple(Model model){
 	        model.addAttribute("requisito", servicioRequisito.NuevoRequisitoSimple());
+	        model.addAttribute("proyectos", servicioProyecto.obtenerTodosLosProyectos());
+	       
 	        return "requisitoformSimple";
 	          }
 		
@@ -69,8 +74,9 @@ public class ControladorRequisito {
 		 
 		 @RequestMapping(value = "requisitoSimple", method = RequestMethod.POST)
 		    public String saveRequisitoSimple(RequisitoSimple requisito){
-			 servicioRequisito.NuevoRequisito(requisito);
-		        return "redirect:/requisitos/" + requisito.getId();
+			// servicioRequisito.NuevoRequisito(requisito);
+		     servicioRequisito.grabarRequisito(requisito); 
+			 return "redirect:/requisitos/" + requisito.getId();
 		    }
 		 @RequestMapping(value = "requisitoCompuesto", method = RequestMethod.POST)
 		    public String saveRequisitoCompuesto(RequisitoCompuesto requisito){

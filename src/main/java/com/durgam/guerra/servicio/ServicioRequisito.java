@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import com.durgam.guerra.dominio.EstadoRequisito;
+import com.durgam.guerra.dominio.GestionRequisito;
+import com.durgam.guerra.dominio.Proyecto;
 import com.durgam.guerra.dominio.Requisito;
 import com.durgam.guerra.dominio.RequisitoCerrado;
 import com.durgam.guerra.dominio.RequisitoCompuesto;
@@ -56,10 +58,10 @@ public class ServicioRequisito {
 		repositorioRequisito.save(requisito);
 	}
 	
-	@Transactional
-	public void ActualizarRequisito(Requisito requisito){
-		repositorioRequisito.saveAndFlush(requisito);
-	}	
+	//@Transactional
+	//public void ActualizarRequisito(Requisito requisito){
+	//	repositorioRequisito.saveAndFlush(requisito);
+	//}	
 	
 	@Transactional
 	public RequisitoCompuesto buscarRequisitoCompuestoPorId(Long id){
@@ -83,6 +85,7 @@ public class ServicioRequisito {
 	
 	@Transactional
 	public Requisito NuevoRequisitoSimple(){
+		//aqui
 		return new RequisitoSimple();
 	}
 	
@@ -96,6 +99,17 @@ public class ServicioRequisito {
 		Requisito requisito= this.buscarRequisitoPorId(id);
 	requisito.setEstadoRequisito(estado);
 		return requisito;
+	}
+	
+	@Transactional
+	public void grabarRequisito(Requisito requisito){
+		
+		
+	
+		
+		
+		
+		this.NuevoRequisito(requisito);
 	}
 	
 	@Transactional

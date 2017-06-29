@@ -25,6 +25,12 @@ public class Proyecto {
 	@ManyToOne(fetch = FetchType.EAGER)
 	private GestionRequisito aplicacion;
 	
+	@OneToMany(cascade = CascadeType.ALL, 
+			fetch = FetchType.EAGER, 
+			mappedBy = "proyecto",
+			orphanRemoval = true)
+	private List<Requisito> requisitos;
+	
 //	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 //	private List<Requisito> requisitos= new ArrayList<Requisito>();
 		
