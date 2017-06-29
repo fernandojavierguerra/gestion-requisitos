@@ -19,8 +19,8 @@ public class Stakeholder {
 	private String rol;
 	private String dni;
 	
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "requisito_stakeholder")
+	@ManyToMany(cascade = CascadeType.ALL, mappedBy="stakeholder")
+	//@JoinTable(name = "requisito_stakeholder")
 	private List<Requisito> requisitos;
 	
 	public Long getId() {

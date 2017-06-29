@@ -101,6 +101,9 @@ INSERT INTO `requisitos`.`stakeholder` (`id`, `apellido`, `dni`, `nombre`, `rol`
 -- Dumping data for table `requisito_stakeholder`
 --
 
+INSERT INTO `requisitos`.`requisito_stakeholder` (`requisitos_id`, `stakeholder_id`) VALUES ('1', '1');
+INSERT INTO `requisitos`.`requisito_stakeholder` (`requisitos_id`, `stakeholder_id`) VALUES ('1', '2');
+INSERT INTO `requisitos`.`requisito_stakeholder` (`requisitos_id`, `stakeholder_id`) VALUES ('2', '1');
 
 
 
