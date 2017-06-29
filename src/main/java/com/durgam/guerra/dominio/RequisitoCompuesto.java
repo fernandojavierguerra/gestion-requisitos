@@ -50,4 +50,13 @@ public class RequisitoCompuesto extends Requisito {
 	public Boolean compuesto() {
 				return Boolean.TRUE;
 	}
+
+	public List<Requisito> getRequisitos() {
+		return requisitos;
+	}
+
+	public void setRequisitos(List<Requisito> requisitos) {
+		this.requisitos = requisitos;
+	}
+	
 }

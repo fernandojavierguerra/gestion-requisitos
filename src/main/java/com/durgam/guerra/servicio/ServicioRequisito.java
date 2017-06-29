@@ -30,6 +30,8 @@ public class ServicioRequisito {
 	@Autowired
 	private ServicioEstados estados;
 	@Autowired
+	private ServicioProyecto servicioProyecto;
+	@Autowired
 	private RepositorioRequisitoCompuesto repositorioCompuesto;
 	@Autowired
 	private RepositorioRequisitoSimple repositorioSimple;
@@ -104,6 +106,14 @@ public class ServicioRequisito {
 	@Transactional
 	public void grabarRequisito(Requisito requisito){		
 		this.NuevoRequisito(requisito);
+	}
+	
+	@Transactional
+	public void agregarRequisitoSimpleaCompuesto(RequisitoSimple requisitoSimple,RequisitoCompuesto requisitoCompuesto){		
+		requisitoSimple.setEstado(requisitoCompuesto.getEstado());
+		requisitoSimple.setProyecto(requisitoCompuesto.getProyecto());
+		requisitoCompuesto.getRequisitos().add(requisitoSimple);
+		
 	}
 	
 	@Transactional
