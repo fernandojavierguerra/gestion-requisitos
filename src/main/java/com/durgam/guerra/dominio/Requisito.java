@@ -13,7 +13,7 @@ import javax.persistence.Version;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Requisito {
+public class Requisito {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
@@ -41,6 +41,7 @@ public abstract class Requisito {
 		this.prioridad = prioridad;
 		this.riesgo = riesgo;
 	}
+	
 	
 	public EstadoRequisito getEstadoRequisito() {
 		return this.estado;

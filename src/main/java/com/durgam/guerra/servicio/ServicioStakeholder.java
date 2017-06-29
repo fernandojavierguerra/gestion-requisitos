@@ -8,8 +8,11 @@ import org.springframework.stereotype.Service;
 
 import com.durgam.guerra.dominio.GestionRequisito;
 import com.durgam.guerra.dominio.Proyecto;
+import com.durgam.guerra.dominio.Requisito;
+import com.durgam.guerra.dominio.RequisitoAbierto;
 import com.durgam.guerra.dominio.RequisitoSimple;
 import com.durgam.guerra.dominio.Stakeholder;
+import com.durgam.guerra.repositorio.RepositorioProyecto;
 import com.durgam.guerra.repositorio.RepositorioStakeholder;
 
 @Service
@@ -19,6 +22,9 @@ public class ServicioStakeholder {
 	private RepositorioStakeholder repositorioStakeholder;
 	@Autowired
 	private ServicioGestionRequisito servicioGestionRequisito;
+	@Autowired
+	private RepositorioProyecto servicioProyecto;
+
 
 	@PostConstruct // La anotación PostConstruct se utiliza en un método que debe ejecutarse tras una inyección de dependencia para efectuar cualquier inicialización
 	@Transactional
@@ -32,13 +38,14 @@ public class ServicioStakeholder {
 		analistaJunior.agregarRequisito(requisito1);
 		analistaJunior.agregarRequisito(requisito2);
 		analistaSenior.agregarRequisito(requisito3);
-		repositorioStakeholder.saveAndFlush(analistaJunior);
-		repositorioStakeholder.saveAndFlush(analistaSenior);
+		//repositorioStakeholder.saveAndFlush(analistaJunior);
+		//repositorioStakeholder.saveAndFlush(analistaSenior);
 		
-		
-		
+		RequisitoSimple requisito4=new RequisitoSimple(0, "Alquiler","Vehiculos","Baja","Ninguna", null);
 		Proyecto proyecto= new Proyecto("Proyecto Alfa", "Alfa Proyect");
+		requisito4.setProyecto(proyecto);
 		GestionRequisito gestion = (servicioGestionRequisito.buscarGestionRequisitoPorId((long) 1));
+		gestion.getProyectos().get(0).getRequisitos().add(requisito4);
 		servicioGestionRequisito.agregarProyecto(gestion, proyecto);
 		servicioGestionRequisito.GrabarGestionRequisito(gestion);
 		

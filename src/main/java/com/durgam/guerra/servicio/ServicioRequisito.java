@@ -102,13 +102,7 @@ public class ServicioRequisito {
 	}
 	
 	@Transactional
-	public void grabarRequisito(Requisito requisito){
-		
-		
-	
-		
-		
-		
+	public void grabarRequisito(Requisito requisito){		
 		this.NuevoRequisito(requisito);
 	}
 	
