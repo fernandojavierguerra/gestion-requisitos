@@ -110,4 +110,12 @@ public abstract class Requisito {
 		this.estado = estado;
 	}
 
+	public Proyecto getProyecto() {
+		return proyecto;
+	}
+
+	public void setProyecto(Proyecto proyecto) {
+		this.proyecto = proyecto;
+	}
+
 }

@@ -90,6 +90,17 @@ public class Proyecto {
 		return this.version;
 	}
 
+	public List<Requisito> getRequisitos() {
+		return requisitos;
+	}
+
+	public void setRequisitos(List<Requisito> requisitos) {
+		this.requisitos = requisitos;
+	}
+
+	
+	
+
 //	public List<Requisito> getRequisitos() {
 //		return requisitos;
 //	}
