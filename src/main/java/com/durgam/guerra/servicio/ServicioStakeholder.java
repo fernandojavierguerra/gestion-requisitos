@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
+import com.durgam.guerra.dominio.EstadoRequisito;
 import com.durgam.guerra.dominio.GestionRequisito;
 import com.durgam.guerra.dominio.Proyecto;
 import com.durgam.guerra.dominio.Requisito;
@@ -23,7 +24,7 @@ public class ServicioStakeholder {
 	@Autowired
 	private ServicioGestionRequisito servicioGestionRequisito;
 	@Autowired
-	private RepositorioProyecto servicioProyecto;
+	private ServicioProyecto servicioProyecto;
 
 
 	@PostConstruct // La anotación PostConstruct se utiliza en un método que debe ejecutarse tras una inyección de dependencia para efectuar cualquier inicialización
@@ -40,12 +41,23 @@ public class ServicioStakeholder {
 		analistaSenior.agregarRequisito(requisito3);
 		//repositorioStakeholder.saveAndFlush(analistaJunior);
 		//repositorioStakeholder.saveAndFlush(analistaSenior);
+		EstadoRequisito estado=RequisitoAbierto.getEstado();
+		RequisitoSimple requisito4=new RequisitoSimple(0, "Alquiler","Vehiculos","Baja","Ninguna",null);
 		
-		RequisitoSimple requisito4=new RequisitoSimple(0, "Alquiler","Vehiculos","Baja","Ninguna", null);
+		requisito4.setEstado(estado);
+		requisito3.setEstado(estado);
+		requisito2.setEstado(estado);
+		requisito1.setEstado(estado);
 		Proyecto proyecto= new Proyecto("Proyecto Alfa", "Alfa Proyect");
-		requisito4.setProyecto(proyecto);
+		
 		GestionRequisito gestion = (servicioGestionRequisito.buscarGestionRequisitoPorId((long) 1));
-		gestion.getProyectos().get(0).getRequisitos().add(requisito4);
+		
+		//gestion.getProyectos().get(0).getRequisitos().add(requisito4);
+		
+		servicioProyecto.agregarRequisito(gestion.getProyectos().get(0), requisito4); 
+		servicioProyecto.agregarRequisito(gestion.getProyectos().get(0), requisito3); 
+		servicioProyecto.agregarRequisito(gestion.getProyectos().get(1), requisito2); 
+		servicioProyecto.agregarRequisito(gestion.getProyectos().get(2), requisito1); 
 		servicioGestionRequisito.agregarProyecto(gestion, proyecto);
 		servicioGestionRequisito.GrabarGestionRequisito(gestion);
 		

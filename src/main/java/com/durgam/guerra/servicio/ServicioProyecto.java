@@ -22,6 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.durgam.guerra.dominio.GestionRequisito;
 import com.durgam.guerra.dominio.Proyecto;
+import com.durgam.guerra.dominio.Requisito;
 import com.durgam.guerra.repositorio.RepositorioGestionRequisito;
 //import com.durgam.guerra.dominio.RequisitoCompuesto;
 //import com.durgam.guerra.dominio.RequisitoSimple;
@@ -158,10 +159,17 @@ public class ServicioProyecto {
 	public Proyecto buscarProyectoPorId(Long id) {
 		return repositorioProyecto.findOne(id);
 	}
-	
+	@Transactional
 	public Proyecto actualizarProyecto(Proyecto proyecto, Proyecto proyectoActual){
 		proyecto.setNombreProyecto(proyectoActual.getNombreProyecto());
 		proyecto.setDescripcionProyecto(proyectoActual.getDescripcionProyecto());
 		return proyecto;
 	}
+	
+	@Transactional
+	public void agregarRequisito(Proyecto proyecto, Requisito requisito) {
+		proyecto.getRequisitos().add(requisito);
+		requisito.setProyecto(proyecto);
+	}
+	
 }
