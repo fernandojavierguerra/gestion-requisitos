@@ -33,48 +33,48 @@ public class ServicioStakeholder {
 	@PostConstruct // La anotación PostConstruct se utiliza en un método que debe ejecutarse tras una inyección de dependencia para efectuar cualquier inicialización
 	@Transactional
 	public void populate(){
-	System.out.println("Creando Stakeholders en la Base de Datos");
-		Stakeholder analistaJunior= new Stakeholder((long) 0, "23456789","Martin","Progarmador1", "ProgramadorJunior");
-		Stakeholder analistaSenior= new Stakeholder((long) 0, "23456789","Luis","AnalistaSeñior1", "Analista Principarl");
-		RequisitoSimple requisito1= new RequisitoSimple(0, "Compra Materiales","Contruccion de Obrador","Alta","Clima Frio",null);
-		RequisitoSimple requisito2= new RequisitoSimple(0, "Migración Linux","Reducción de costos Licencia","Media","Multas",null);
-		RequisitoSimple requisito3= new RequisitoSimple(0, "Armado de Estantes","Exponer","Baja","Ninguno",null);
-		RequisitoCompuesto requisitoComp1= new RequisitoCompuesto(0, "Fase de Desarro","Contrata","Baja","Ninguno",null);
-		
-		RequisitoSimple requisitoSimpleCompuesto1= new RequisitoSimple(0, "FirmaContrato","Pagos","Baja","Ninguno",null);
-		
-		//analistaJunior.agregarRequisito(requisito1);
-		//analistaJunior.agregarRequisito(requisito2);
-		//analistaSenior.agregarRequisito(requisito3);
-		//repositorioStakeholder.saveAndFlush(analistaJunior);
-		//repositorioStakeholder.saveAndFlush(analistaSenior);
-		EstadoRequisito estado=RequisitoAbierto.getEstado();
-		RequisitoSimple requisito4=new RequisitoSimple(0, "Alquiler","Vehiculos","Baja","Ninguna",null);
-		
-		requisito4.setEstado(estado);
-		requisito3.setEstado(estado);
-		requisito2.setEstado(estado);
-		requisito1.setEstado(estado);
-		requisitoComp1.setEstado(estado);
-		
-		//requisitoSimpleCompuesto1.setEstado(estado);
-		
-		 
-		Proyecto proyecto= new Proyecto("Proyecto Alfa", "Alfa Proyect");
-		
-		GestionRequisito gestion = (servicioGestionRequisito.buscarGestionRequisitoPorId((long) 1));
-		
-		servicioProyecto.agregarRequisito(gestion.getProyectos().get(0), requisito4); 
-		servicioProyecto.agregarRequisito(gestion.getProyectos().get(0), requisito3); 
-		servicioProyecto.agregarRequisito(gestion.getProyectos().get(1), requisito2); 
-		servicioProyecto.agregarRequisito(gestion.getProyectos().get(2), requisito1); 
-		
-	
-		servicioProyecto.agregarRequisito(gestion.getProyectos().get(2), requisitoComp1); 
-		servicioRequisito.agregarRequisitoSimpleaCompuesto(requisitoSimpleCompuesto1, requisitoComp1);
-		servicioGestionRequisito.agregarProyecto(gestion, proyecto);
-		
-		servicioGestionRequisito.GrabarGestionRequisito(gestion);
+//	System.out.println("Creando Stakeholders en la Base de Datos");
+//		Stakeholder analistaJunior= new Stakeholder((long) 0, "23456789","Martin","Progarmador1", "ProgramadorJunior");
+//		Stakeholder analistaSenior= new Stakeholder((long) 0, "23456789","Luis","AnalistaSeñior1", "Analista Principarl");
+//		RequisitoSimple requisito1= new RequisitoSimple(0, "Compra Materiales","Contruccion de Obrador","Alta","Clima Frio",null);
+//		RequisitoSimple requisito2= new RequisitoSimple(0, "Migración Linux","Reducción de costos Licencia","Media","Multas",null);
+//		RequisitoSimple requisito3= new RequisitoSimple(0, "Armado de Estantes","Exponer","Baja","Ninguno",null);
+//		RequisitoCompuesto requisitoComp1= new RequisitoCompuesto(0, "Fase de Desarro","Contrata","Baja","Ninguno",null);
+//		
+//		RequisitoSimple requisitoSimpleCompuesto1= new RequisitoSimple(0, "FirmaContrato","Pagos","Baja","Ninguno",null);
+//		
+//		//analistaJunior.agregarRequisito(requisito1);
+//		//analistaJunior.agregarRequisito(requisito2);
+//		//analistaSenior.agregarRequisito(requisito3);
+//		//repositorioStakeholder.saveAndFlush(analistaJunior);
+//		//repositorioStakeholder.saveAndFlush(analistaSenior);
+//		EstadoRequisito estado=RequisitoAbierto.getEstado();
+//		RequisitoSimple requisito4=new RequisitoSimple(0, "Alquiler","Vehiculos","Baja","Ninguna",null);
+//		
+//		requisito4.setEstado(estado);
+//		requisito3.setEstado(estado);
+//		requisito2.setEstado(estado);
+//		requisito1.setEstado(estado);
+//		requisitoComp1.setEstado(estado);
+//		
+//		//requisitoSimpleCompuesto1.setEstado(estado);
+//		
+//		 
+//		Proyecto proyecto= new Proyecto("Proyecto Alfa", "Alfa Proyect");
+//		
+//		GestionRequisito gestion = (servicioGestionRequisito.buscarGestionRequisitoPorId((long) 1));
+//		
+//		servicioProyecto.agregarRequisito(gestion.getProyectos().get(0), requisito4); 
+//		servicioProyecto.agregarRequisito(gestion.getProyectos().get(0), requisito3); 
+//		servicioProyecto.agregarRequisito(gestion.getProyectos().get(1), requisito2); 
+//		servicioProyecto.agregarRequisito(gestion.getProyectos().get(2), requisito1); 
+//		
+//	
+//		servicioProyecto.agregarRequisito(gestion.getProyectos().get(2), requisitoComp1); 
+//		servicioRequisito.agregarRequisitoSimpleaCompuesto(requisitoSimpleCompuesto1, requisitoComp1);
+//		servicioGestionRequisito.agregarProyecto(gestion, proyecto);
+//		
+//		servicioGestionRequisito.GrabarGestionRequisito(gestion);
 		
 	}
 	@Transactional

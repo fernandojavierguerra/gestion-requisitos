@@ -18,15 +18,15 @@ public class ServicioEstados {
 	@Autowired
 	private RepositorioEstado estados;
 	
-	@PostConstruct // La anotación PostConstruct se utiliza en un método que debe ejecutarse tras una inyección de dependencia para efectuar cualquier inicialización
-	@Transactional
-	public void populate(){
-		//estados.save(new RequisitoAbierto());
-		estados.save(new RequisitoCerrado());
-		estados.save(new RequisitoResuelto());
-		estados.save(new RequisitoReabierto());
-		estados.save(new RequisitoEnProgreso());
-	}
+//	@PostConstruct // La anotación PostConstruct se utiliza en un método que debe ejecutarse tras una inyección de dependencia para efectuar cualquier inicialización
+//	@Transactional
+//	public void populate(){
+//		//estados.save(new RequisitoAbierto());
+//		estados.save(new RequisitoCerrado());
+//		estados.save(new RequisitoResuelto());
+//		estados.save(new RequisitoReabierto());
+//		estados.save(new RequisitoEnProgreso());
+//	}
 	
 	@Transactional
 	public EstadoRequisito abierto(){

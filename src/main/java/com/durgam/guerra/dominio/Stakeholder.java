@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 @Entity
@@ -19,6 +20,7 @@ public class Stakeholder {
 	private String dni;
 	
 	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "requisito_stakeholder")
 	private List<Requisito> requisitos;
 	
 	public Long getId() {

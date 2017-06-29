@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
@@ -30,10 +31,12 @@ public class Requisito {
 	
 	@Version
 	private Long version;
+	
 	@OneToOne(cascade = (CascadeType.ALL))
 	private EstadoRequisito estado;
 	
 	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "requisito_stakeholder")
 	private List<Stakeholder> stakeholder;
 
 	public Requisito() {

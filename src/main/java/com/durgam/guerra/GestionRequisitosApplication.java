@@ -14,17 +14,7 @@ public class GestionRequisitosApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(GestionRequisitosApplication.class, args);
-	
-
-//		entityManager.getTransaction().begin();
-
-//		entityManager.persist(app);	
-		
-		
-//		entityManager.getTransaction().commit();
-//		entitpublicyManager.close();
-	    
-      
+	      
         
 	}
 }

@@ -92,6 +92,8 @@ INSERT INTO `requisito_simple` (`id`) VALUES (6);
 --
 -- Dumping data for table `stakeholder`
 --
+INSERT INTO `requisitos`.`stakeholder` (`id`, `apellido`, `dni`, `nombre`, `rol`) VALUES (1, 'Gomez', '21455876', 'Luis', 'Programador');
+INSERT INTO `requisitos`.`stakeholder` (`id`, `apellido`, `dni`, `nombre`, `rol`) VALUES (2, 'Perez', '29123956', 'Carlos', 'Analista');
 
 
 
@@ -102,9 +104,5 @@ INSERT INTO `requisito_simple` (`id`) VALUES (6);
 
 
 
-
---
--- Dumping data for table `stakeholder_requisitos`
---
 
 
