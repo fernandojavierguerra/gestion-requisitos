@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.Version;
 
 @Entity
 public class Stakeholder {
@@ -22,6 +23,8 @@ public class Stakeholder {
 	@ManyToMany(cascade = CascadeType.ALL, mappedBy="stakeholder")
 	//@JoinTable(name = "requisito_stakeholder")
 	private List<Requisito> requisitos;
+	@Version
+	private Long version;
 	
 	public Long getId() {
 		return id;
@@ -82,5 +85,12 @@ public class Stakeholder {
 	public String toString() {
 		return "Stakeholder [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", rol=" + rol + ", dni="
 				+ dni + "]";
+	}
+	public Long getVersion() {
+		return version;
+	}
+	public void setVersion(Long version) {
+		this.version = version;
 	}	
+	
 }

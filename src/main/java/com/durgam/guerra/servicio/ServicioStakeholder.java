@@ -93,6 +93,8 @@ public class ServicioStakeholder {
 	
 	@Transactional
 	public Stakeholder NuevoStakeholder(){
+		
+		
 		return new Stakeholder();
 	}
 	
@@ -104,7 +106,32 @@ public class ServicioStakeholder {
 	
 	@Transactional
 	public void NuevoStakeholder(Stakeholder stakeholder){
-		repositorioStakeholder.save(stakeholder);
+		
+		
+if ( stakeholder.getId()==null){
+			
+			
+	repositorioStakeholder.save(stakeholder);
+		}else	{
+				if (repositorioStakeholder.exists(stakeholder.getId())) {
+					Stakeholder stakeholderExistente = repositorioStakeholder.findOne(stakeholder.getId());
+					stakeholderExistente=this.actualizarStakeholder(stakeholderExistente, stakeholder);
+					//Para probar la concurrencia
+					for (int i=0;i<100000;i++){
+					System.out.println(i);
+					}
+				
+				}
+			}
+		
+		
+	}
+	private Stakeholder actualizarStakeholder(Stakeholder stakeholderExistente, Stakeholder stakeholder) {
+		stakeholderExistente.setApellido(stakeholder.getApellido());
+		stakeholderExistente.setDni(stakeholder.getDni());
+		stakeholderExistente.setNombre(stakeholder.getNombre());
+		stakeholderExistente.setRol(stakeholder.getRol());
+		return stakeholderExistente;
 	}
 	@Transactional
 	public void ActualizarStakeholder(Stakeholder stakeholder){
