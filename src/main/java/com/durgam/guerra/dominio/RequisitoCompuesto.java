@@ -14,8 +14,9 @@ public class RequisitoCompuesto extends Requisito {
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Requisito> requisitos;
 
-	@Override
-	public String getNombre() {
+//	@Override
+//	public String getNombre() {
+	public String getTodosLosNombres() {
 		// recorrer lista de requisitos, retornando el nombre de cada uno
 		String nombre = "";
 		for (int i = 0; i < this.getListrequisito().size(); i++) {
