@@ -61,7 +61,9 @@ public class ServicioRequisito {
 	public void NuevoRequisito(Requisito requisito) {
 		EstadoRequisito estado = estados.abierto();
 		requisito.setEstadoRequisito(estado);
-		repositorioRequisito.save(requisito);
+		Proyecto proyecto=servicioProyecto.buscarProyectoPorId(requisito.getProyecto().getId());
+		proyecto.getRequisitos().add(requisito);
+		
 	}
 
 	// @Transactional
