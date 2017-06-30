@@ -25,6 +25,16 @@ public class RequisitoCompuesto extends Requisito {
 		return nombre;
 	}
 	
+	@Override
+	public void setProyecto(Proyecto proyecto) {
+		for (int i = 0; i < this.getListrequisito().size(); i++) {
+			this.getListrequisito().get(i).setProyecto(proyecto);
+		}
+		
+		//this.proyecto = proyecto;
+		super.setProyecto(proyecto);
+	}
+	
 	public void agregar(Requisito requisito) {
 		requisitos.add(requisito);
 	}
