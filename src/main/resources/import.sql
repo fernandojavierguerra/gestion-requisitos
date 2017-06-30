@@ -33,9 +33,9 @@ INSERT INTO `estado_requisito` (`id`, `descripcion_estado`) VALUES (5,'Abierto')
 INSERT INTO `requisito` (`id`, `necesidad`, `nombre`, `prioridad`, `riesgo`, `version`, `estado_id`, `proyecto_id`) VALUES (1,'Vehiculos','Alquiler','Baja','Ninguna',0,5,1);
 INSERT INTO `requisito` (`id`, `necesidad`, `nombre`, `prioridad`, `riesgo`, `version`, `estado_id`, `proyecto_id`) VALUES (2,'Exponer','Armado de Estantes','Baja','Ninguno',0,5,1);
 INSERT INTO `requisito` (`id`, `necesidad`, `nombre`, `prioridad`, `riesgo`, `version`, `estado_id`, `proyecto_id`) VALUES (3,'Reducción de costos Licencia','Migración Linux','Media','Multas',0,5,2);
-INSERT INTO `requisito` (`id`, `necesidad`, `nombre`, `prioridad`, `riesgo`, `version`, `estado_id`, `proyecto_id`) VALUES (4,'Contruccion de Obrador','Compra Materiales','Alta','Clima Frio',0,5,3);
-INSERT INTO `requisito` (`id`, `necesidad`, `nombre`, `prioridad`, `riesgo`, `version`, `estado_id`, `proyecto_id`) VALUES (5,'Contrata','Fase de Desarro','Baja','Ninguno',0,5,3);
-INSERT INTO `requisito` (`id`, `necesidad`, `nombre`, `prioridad`, `riesgo`, `version`, `estado_id`, `proyecto_id`) VALUES (6,'Pagos','FirmaContrato','Baja','Ninguno',0,5,3);
+INSERT INTO `requisito` (`id`, `necesidad`, `nombre`, `prioridad`, `riesgo`, `version`, `estado_id`, `proyecto_id`) VALUES (4,'Contruccion de Obrador','Compra de Materiales','Alta','Clima Frio',0,5,3);
+INSERT INTO `requisito` (`id`, `necesidad`, `nombre`, `prioridad`, `riesgo`, `version`, `estado_id`, `proyecto_id`) VALUES (5,'Contratacion','Fase de Desarro','Baja','Ninguno',0,5,3);
+INSERT INTO `requisito` (`id`, `necesidad`, `nombre`, `prioridad`, `riesgo`, `version`, `estado_id`, `proyecto_id`) VALUES (6,'Pagos','Firma de Contrato','Baja','Ninguno',0,5,3);
 
 
 --
