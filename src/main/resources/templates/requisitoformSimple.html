@@ -2,97 +2,96 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head lang="en">
 
-    <title>Sistema Requerimientos</title>
+<title>Sistema Requerimientos</title>
 
-    <!--/*/ <th:block th:include="config/headerinc :: head"></th:block> /*/-->
+<!--/*/ <th:block th:include="config/headerinc :: head"></th:block> /*/-->
 </head>
 <body>
-<div class="container">
-    <!--/*/ <th:block th:include="config/header :: header"></th:block> /*/-->
+	<div class="container">
+		<!--/*/ <th:block th:include="config/header :: header"></th:block> /*/-->
 
-    <h2>Requisito Simple Detalle</h2>
-    <div>
-        <form class="form-horizontal" th:object="${requisito}" th:action="@{/requisitoSimple/}" method="post">
-            <input type="hidden" th:field="*{id}"/>
-         
-            <div class="form-group">
-                <label class="col-sm-2 control-label">Nombre:</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" th:field="*{nombre}"/>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label">Necesidad:</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" th:field="*{necesidad}"/>
-                </div>
-            </div>
-             <div class="form-group">
-                <label class="col-sm-2 control-label">Prioridad:</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" th:field="*{prioridad}"/>
-                </div>
-            </div>
-             <div class="form-group">
-                <label class="col-sm-2 control-label">Riesgo:</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" th:field="*{riesgo}"/>
-                </div>
-            </div>
-            
-             <div class="form-group">
-                <label class="col-sm-2 control-label">Proyecto</label>
-                <div class="col-sm-10">
-                    <select th:field="*{proyecto}" id="proyecto" name="proyecto.id">
-		<option th:each="proyecto : ${proyectos}" 
-			  th:value="${proyecto.id}" 
-			  th:text="${proyecto.nombreProyecto}"
-			
-			   />
-			  
-	</select>
-               
-                </div>
-            </div>
-            
-          
- 
- <div class="container">
-       <div th:if="${not #lists.isEmpty(compuesto)}">
-        <h2>Requisitos</h2>
-        <table class="table table-striped">
-            <tr>
-                <th>Id</th>
-                <th>Product Id</th>
-                <th>Description</th>
-                <th>Price</th>
-                <th>View</th>
-                <th>Edit</th>
-                <th>Delete</th>
-            </tr>
-            <tr th:each="requisito : ${compuesto}">
-                <td th:text="${requisito.id}"><a href="/requisitosSimple/${requisito.id}">Id</a></td>
-                <td th:text="${requisito.nombre}">Id</td>
-                <td th:text="${requisito.necesidad}">Necesidad</td>
-                <td th:text="${requisito.prioridad}">Prioridad</td>
-                <td><a th:href="${'/requisitos/' + requisito.id}">Ver</a></td>
-                <td><a th:href="${'/requisitos/edit/' + requisito.id}">Editar</a></td>
-                <td><a th:href="${'/requisitos/delete/' + requisito.id}">Eliminar</a></td>
-            </tr>
-        </table>
+		<h2>Requisito Simple Detalle</h2>
+		<div>
+			<form class="form-horizontal" th:object="${requisito}"
+				th:action="@{/requisitoSimple/}" method="post">
+				<input type="hidden" th:field="*{id}" />
 
-    </div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Nombre:</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" th:field="*{nombre}" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Necesidad:</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" th:field="*{necesidad}" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Prioridad:</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" th:field="*{prioridad}" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Riesgo:</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" th:field="*{riesgo}" />
+					</div>
+				</div>
 
-     
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Proyecto</label>
+					<div class="col-sm-10">
+						<select th:field="*{proyecto}" id="proyecto" name="proyecto.id">
+							<option th:each="proyecto : ${proyectos}"
+								th:value="${proyecto.id}" th:text="${proyecto.nombreProyecto}" />
 
-</div>
-            
-            <div class="row">
-                <button type="submit" class="btn btn-default">Aceptar</button>
-            </div>
-        </form>
-    </div>
-</div>
+						</select>
+
+					</div>
+				</div>
+
+
+
+				<div class="container">
+					<div th:if="${not #lists.isEmpty(compuesto)}">
+						<h2>Requisitos</h2>
+						<table class="table table-striped">
+							<tr>
+								<th>Id</th>
+								<th>Product Id</th>
+								<th>Description</th>
+								<th>Price</th>
+								<th>View</th>
+								<th>Edit</th>
+								<th>Delete</th>
+							</tr>
+							<tr th:each="requisito : ${compuesto}">
+								<td th:text="${requisito.id}"><a
+									href="/requisitosSimple/${requisito.id}">Id</a></td>
+								<td th:text="${requisito.nombre}">Id</td>
+								<td th:text="${requisito.necesidad}">Necesidad</td>
+								<td th:text="${requisito.prioridad}">Prioridad</td>
+								<td><a th:href="${'/requisitos/' + requisito.id}">Ver</a></td>
+								<td><a th:href="${'/requisitos/edit/' + requisito.id}">Editar</a></td>
+								<td><a th:href="${'/requisitos/delete/' + requisito.id}">Eliminar</a></td>
+							</tr>
+						</table>
+
+					</div>
+
+
+
+				</div>
+
+				<div class="row">
+					<button type="submit" class="btn btn-default">Aceptar</button>
+				</div>
+			</form>
+		</div>
+	</div>
 
 </body>
 </html>
