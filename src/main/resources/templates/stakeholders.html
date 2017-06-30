@@ -10,7 +10,7 @@
 <div class="container">
     <!--/*/ <th:block th:include="config/header :: header"></th:block> /*/-->
     <div th:if="${not #lists.isEmpty(stakeholders)}">
-        <h2>Lista de Proyectos</h2>
+        <h2>Lista de Interesados</h2>
         <table class="table table-striped">
             <tr>
                 <th>Id</th>
@@ -23,7 +23,6 @@
                 <th>Eliminar</th>
             </tr>
             <tr th:each="stakeholder : ${stakeholders}">
-                <td th:text="${stakeholder.id}"><a href="/stakeholder/${stakeholder.id}">Id</a></td>
                 <td th:text="${stakeholder.id}">Id</td>
                 <td th:text="${stakeholder.nombre}">Nombre</td>
                 <td th:text="${stakeholder.apellido}">Apellido</td>
