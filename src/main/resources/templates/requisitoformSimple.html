@@ -42,8 +42,8 @@
             
              <div class="form-group">
                 <label class="col-sm-2 control-label">Proyecto</label>
-                <div class="col-sm-10" th:if="${not #lists.isEmpty(requisito.id)}">
-                    <select id="proyecto" name="proyecto.id">
+                <div class="col-sm-10">
+                    <select th:field="*{proyecto}" id="proyecto" name="proyecto.id">
 		<option th:each="proyecto : ${proyectos}" 
 			  th:value="${proyecto.id}" 
 			  th:text="${proyecto.nombreProyecto}"

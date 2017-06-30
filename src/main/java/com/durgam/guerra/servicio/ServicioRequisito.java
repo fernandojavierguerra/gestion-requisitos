@@ -141,6 +141,8 @@ public class ServicioRequisito {
 		 requisitoExistente.setNombre(requisito.getNombre());
 		 requisitoExistente.setPrioridad(requisito.getPrioridad());
 		 requisitoExistente.setRiesgo(requisito.getRiesgo());
+		 requisitoExistente.setProyecto(requisito.getProyecto());
+		 
 		 
 		 return requisitoExistente;
 	}
