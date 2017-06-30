@@ -9,25 +9,31 @@ public class RequisitoEnProgreso extends EstadoRequisito {
 	private static RequisitoEnProgreso estado;
 	
 	public RequisitoEnProgreso() {
-		super((long) 5,descripcion);
-		// TODO Auto-generated constructor stub
+		super((long) 4,descripcion);
+		
 	}
 	
-	@Override
-	public List<EstadoRequisito> siguiente() {
-		//Posibles: Resuelto, Cerrado
-		List<EstadoRequisito> lista=new ArrayList<EstadoRequisito>();
-		RequisitoResuelto resuelto= new RequisitoResuelto();
-		RequisitoCerrado cerrado = new RequisitoCerrado();
-		lista.add(resuelto);
-		lista.add(cerrado);
-		return lista;
-	}
+
 	
 	public static RequisitoEnProgreso getEstado() {
 		if (estado == null) {
 			estado = new RequisitoEnProgreso();
 		}
 		return estado;
+	}
+	
+	@Override
+	public List<EstadoRequisito> siguiente() {
+		//Posibles: Resuelto, Cerrado, abierto, reabierto
+		List<EstadoRequisito> lista=new ArrayList<EstadoRequisito>();
+		RequisitoResuelto resuelto= new RequisitoResuelto();
+		RequisitoCerrado cerrado = new RequisitoCerrado();
+		RequisitoAbierto abierto = new RequisitoAbierto();
+		RequisitoReabierto reabierto = new RequisitoReabierto();
+		lista.add(resuelto);
+		lista.add(cerrado);
+		lista.add(abierto);
+		lista.add(reabierto);
+		return lista;
 	}
 }

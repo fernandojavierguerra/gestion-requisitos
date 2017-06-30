@@ -1,4 +1,5 @@
 package com.durgam.guerra.dominio;
+
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
@@ -9,9 +10,9 @@ public class RequisitoAbierto extends EstadoRequisito {
 	private static RequisitoAbierto estado;
 
 	public RequisitoAbierto() {
-		super((long) 1, descripcion);
-		}
-	
+		super((long) 5, descripcion);
+	}
+
 	public static RequisitoAbierto getEstado() {
 		if (estado == null) {
 			estado = new RequisitoAbierto();
@@ -23,9 +24,11 @@ public class RequisitoAbierto extends EstadoRequisito {
 	public List<EstadoRequisito> siguiente() {
 		List<EstadoRequisito> lista = new ArrayList<EstadoRequisito>();
 		RequisitoResuelto resuelto = new RequisitoResuelto();
-		RequisitoAbierto cerrado = new RequisitoAbierto();
+		RequisitoCerrado cerrado = new RequisitoCerrado();
+		RequisitoEnProgreso enProgreso = new RequisitoEnProgreso();
 		lista.add(resuelto);
 		lista.add(cerrado);
+		lista.add(enProgreso);
 		return lista;
 	}
 
