@@ -20,7 +20,7 @@ public class Stakeholder {
 	private String rol;
 	private String dni;
 	
-	@ManyToMany(cascade = CascadeType.ALL, mappedBy="stakeholder")
+	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy="stakeholder")
 	//@JoinTable(name = "requisito_stakeholder")
 	private List<Requisito> requisitos;
 	@Version
@@ -80,7 +80,15 @@ public class Stakeholder {
 	
 	public void agregarRequisito(Requisito requisito){
 		this.requisitos.add(requisito);
+		requisito.getStakeholder().add(this);
 	}
+	
+	public void quitarRequisito(Requisito requisito){
+		this.requisitos.remove(requisito);
+		requisito.getStakeholder().remove(this);
+	}
+	
+	
 	@Override
 	public String toString() {
 		return "Stakeholder [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", rol=" + rol + ", dni="

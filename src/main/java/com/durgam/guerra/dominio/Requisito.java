@@ -35,7 +35,7 @@ public class Requisito {
 	@OneToOne(cascade = (CascadeType.ALL))
 	private EstadoRequisito estado;
 	
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	@JoinTable(name = "requisito_stakeholder")
 	private List<Stakeholder> stakeholder;
 
