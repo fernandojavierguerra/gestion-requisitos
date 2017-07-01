@@ -56,6 +56,7 @@
 								<th>Ver</th>
 								<th>Editar</th>
 								<th>Eliminar</th>
+								<th>Quitar</th>
 							</tr>
 							<tr th:each="requisito : ${stakeholder.requisitos}">
 								<td th:text="${requisito.id}"><a
@@ -65,7 +66,8 @@
 								<td th:text="${requisito.prioridad}">Prioridad</td>
 								<td><a th:href="${'/requisitos/' + requisito.id}">Ver</a></td>
 								<td><a th:href="${'/requisitos/edit/' + requisito.id}">Editar</a></td>
-								<td><a th:href="${'/requisitos/delete/' + requisito.id}">Eiminar</a></td>
+								<td><a th:href="${'/requisitos/delete/' + requisito.id}">Eliminar</a></td>
+								<td><a th:href="${'/stakeholder/quitar/' + stakeholder.id +'/'+ requisito.id}">Quitar</a></td>
 							</tr>
 						</table>
 
