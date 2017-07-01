@@ -53,7 +53,7 @@ public class ControladorStakeholder {
 	 }	
 	 
 	 @RequestMapping("/stakeholder/quitar/{id}/{id_requisito}")
-	 public String quitarRequisito(@PathVariable Long id, Long id_requisito){
+	 public String quitarRequisito(@PathVariable Long id, @PathVariable Long id_requisito){
 		 servicioStakeholder.quitarRequisitoStakeholder(servicioStakeholder.buscarStakeholderPorId(id), servicioRequisito.buscarRequisitoPorId(id_requisito));
 	     return "redirect:/stakeholders";
 	 }	
